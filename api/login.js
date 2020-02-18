@@ -15,11 +15,7 @@ router.post("/test", async (req, res) => {
 
 // skip encrypting password shit
 
-// Just write the part where we put the email and pass into the data base so register.
-
-// business model for registration
-
-// client Model for registration
+// Business Model for registration
 const BusinessSchema = new mongoose.Schema({
   firstName: {
     type: String,
@@ -49,7 +45,9 @@ const BusinessSchema = new mongoose.Schema({
 });
 Business = mongoose.model("business", BusinessSchema);
 
-// POST api/login/business
+// @route    POST api/login/business
+// @desc     Register business
+// @access   Public
 router.post("/business", async (req, res) => {
   // need a model to refer to for the client and the business sign up
 
@@ -83,8 +81,9 @@ router.post("/business", async (req, res) => {
   }
 });
 
-// login business
-// POST api/login/businessLogin
+// @route    POST api/login/businessLogin
+// @desc     Login business
+// @access   Public
 router.post("/businessLogin", async (req, res) => {
   const { email, password } = req.body;
 
@@ -133,8 +132,9 @@ const ClientSchema = new mongoose.Schema({
 });
 Client = mongoose.model("client", ClientSchema);
 
-// register client user
-// POST api/login/client
+// @route    POST api/login/client
+// @desc     Login client
+// @access   Public
 router.post("/client", async (req, res) => {
   // need a model to refer to for the client and the business sign up
 
@@ -164,11 +164,10 @@ router.post("/client", async (req, res) => {
   }
 });
 
-// login client
-// POST api/login/clientLogin
+// @route    POST api/login/clientLogin
+// @desc     Login client
+// @access   Public
 router.post("/clientLogin", async (req, res) => {
-  // need a model to refer to for the client and the business sign up
-
   const { email, password } = req.body;
 
   console.log(email, password);
