@@ -1,0 +1,49 @@
+
+// test GET api
+GET http://localhost:5000/api/login/test
+Content-Type: application/json
+###
+
+// test POST api
+POST http://localhost:5000/api/login/test
+Content-Type: application/json
+
+{
+    "firstName" : "Otto",
+    "lastName": "Kafka"
+}
+###
+
+// client registration 
+POST http://localhost:5000/api/login/client
+Content-Type: application/json
+
+{
+    "name" : "Otto3",
+    "email": "Kafka5@email.com",
+    "password": "1234567890"
+}
+###
+
+// Business registration 
+POST http://localhost:5000/api/login/business
+Content-Type: application/json
+
+{
+    "firstName" : "Otto",
+    "lastName": "kafka",
+    "email": "businessKakfa2@email.com",
+    "password": "1234567890",
+    "phoneNumber": "123456789"
+}
+###
+
+// client login 
+POST http://localhost:5000/api/login/clientLogin
+Content-Type: application/json
+
+{
+    "email" : "Kafka5@email.com",
+    "password": "1234567890"
+}
+###

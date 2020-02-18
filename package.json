@@ -1,0 +1,18 @@
+{
+  "name": "mern",
+  "version": "1.0.0",
+  "description": "mern boilplate",
+  "main": "server.js",
+  "scripts": {
+    "server": "nodemon server.js"
+  },
+  "author": "otto kafka",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
