@@ -31,6 +31,7 @@ app.use(express.json({ extended: false }));
 
 // all api routes
 app.use("/api/login", require("./api/login"));
+app.use("/api/availability", require("./api/availability"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {

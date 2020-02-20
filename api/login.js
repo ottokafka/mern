@@ -1,6 +1,30 @@
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const Business = require("../models/Business");
+const jwt = require("jsonwebtoken");
+const token = require("../token");
+
+// @route    GET api/login/token
+// @desc     test the token
+// @access   Public
+router.get("/token", token, async (req, res) => {
+  res.json("Token route is working, this is a private route");
+});
+
+// @route    GET api/login/tokenUserID
+// @desc     test the token
+// @access   Public
+router.get("/tokenUserID", token, async (req, res) => {
+  try {
+    const business = await Business.findById(req.business.id).select(
+      "-password"
+    );
+    res.json(business);
+  } catch (err) {
+    res.status(500).json({ msg: "server error" });
+  }
+});
 
 // GET api/login/test
 router.get("/test", async (req, res) => {
@@ -15,36 +39,6 @@ router.post("/test", async (req, res) => {
 
 // skip encrypting password shit
 
-// Business Model for registration
-const BusinessSchema = new mongoose.Schema({
-  firstName: {
-    type: String,
-    required: true
-  },
-  lastName: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  phoneNumber: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-Business = mongoose.model("business", BusinessSchema);
-
 // @route    POST api/login/business
 // @desc     Register business
 // @access   Public
@@ -55,7 +49,7 @@ router.post("/business", async (req, res) => {
 
   try {
     // search db for email
-    let findEmail = await Client.findOne({ email });
+    let findEmail = await Business.findOne({ email });
 
     if (findEmail) {
       return res.status(400).json({ errors: [{ msg: "User already exists" }] });
@@ -74,7 +68,18 @@ router.post("/business", async (req, res) => {
     // Save to the db
     await business.save();
 
-    res.json("saved successfully");
+    // give jwt to business
+    jwt.sign(
+      { business: { id: business.id } },
+      "gateway",
+      {
+        expiresIn: 3600000
+      },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.log("server error");
     res.json("server error");
@@ -87,23 +92,32 @@ router.post("/business", async (req, res) => {
 router.post("/businessLogin", async (req, res) => {
   const { email, password } = req.body;
 
-  console.log(email, password);
-
   try {
     // search db for email
-    let businessInfo = await Client.findOne({ email });
+    let businessInfo = await Business.findOne({ email });
 
-    if (!businessInfo) {
+    console.log(businessInfo.email);
+
+    if (businessInfo.email !== email) {
       return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
-
-    console.log(businessInfo);
 
     if (password !== businessInfo.password) {
       return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
 
-    res.json("successfully logged in client ");
+    // give jwt to business
+    jwt.sign(
+      { business: { id: business.id } },
+      "gateway",
+      {
+        expiresIn: 360000
+      },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.log("server error");
     res.json("server error");
@@ -158,6 +172,19 @@ router.post("/client", async (req, res) => {
 
     // Save to the db
     await client.save();
+
+    // give jwt to client
+    var token = jwt.sign(
+      { client: { id: client.id } },
+      "gateway",
+      {
+        expiresIn: 3600000
+      },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.log("server error");
     res.json("server error");
@@ -186,7 +213,18 @@ router.post("/clientLogin", async (req, res) => {
       return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
 
-    res.json("successfully logged in client ");
+    // give jwt to client
+    var token = jwt.sign(
+      { client: { id: client.id } },
+      "gateway",
+      {
+        expiresIn: 3600000
+      },
+      (err, token) => {
+        if (err) throw err;
+        res.json({ token });
+      }
+    );
   } catch (err) {
     console.log("server error");
     res.json("server error");
