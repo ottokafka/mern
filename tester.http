@@ -83,23 +83,7 @@ Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
 
 {
-      "day_of_week1": "Monday",
-      "work1": true,
-      "start_time1": "2:00",
-      "end_time1": "6:00",
-      "start_lunch1": "6:00",
-      "end_lunch1": "7:00",
-      "day_of_week2": "Tuesday",
-      "work2": true,
-      "start_time2": "11:00",
-      "end_time2": "19:00",
-      "start_lunch2": "12:00",
-      "end_lunch2": "13:00"
-}
-###
-
-{
-      "day_of_week1": "Monday",
+       "day_of_week1": "Monday",
       "work1": true,
       "start_time1": "09:00",
       "end_time1": "18:00",
@@ -142,4 +126,9 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
       "start_lunch7": "12:00",
       "end_lunch7": "13:00"
 }
+###
+
+// Grab availability data from business
+GET http://localhost:5000/api/availability/work
+Content-Type: application/json
 ###
