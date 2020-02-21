@@ -84,46 +84,46 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 
 {
        "day_of_week1": "Monday",
-      "work1": true,
-      "start_time1": "09:00",
-      "end_time1": "18:00",
-      "start_lunch1": "12:00",
+      "work1": "true",
+      "start_time1": "13:00",
+      "end_time1": "13:00",
+      "start_lunch1": "13:00",
       "end_lunch1": "13:00",
       "day_of_week2": "Tuesday",
-      "work2": true,
-      "start_time2": "09:00",
-      "end_time2": "18:00",
-      "start_lunch2": "12:00",
+      "work2": "false",
+      "start_time2": "13:00",
+      "end_time2": "13:00",
+      "start_lunch2": "13:00",
       "end_lunch2": "13:00",
       "day_of_week3": "Wensday",
-      "work3": true,
-      "start_time3": "09:00",
-      "end_time3": "18:00",
-      "start_lunch3": "12:00",
+      "work3": "false",
+      "start_time3": "13:00",
+      "end_time3": "13:00",
+      "start_lunch3": "13:00",
       "end_lunch3": "13:00",
       "day_of_week4": "Thursday",
-      "work4": true,
-      "start_time4": "09:00",
-      "end_time4": "18:00",
-      "start_lunch4": "12:00",
+      "work4": "false",
+      "start_time4": "13:00",
+      "end_time4": "13:00",
+      "start_lunch4": "13:00",
       "end_lunch4": "13:00",
       "day_of_week5": "Friday",
-      "work5": true,
-      "start_time5": "09:00",
-      "end_time5": "18:00",
-      "start_lunch5": "12:00",
+      "work5": "false",
+      "start_time5": "13:00",
+      "end_time5": "13:00",
+      "start_lunch5": "13:00",
       "end_lunch5": "13:00",
       "day_of_week6": "Saturday",
-      "work6": true,
-      "start_time6": "09:00",
-      "end_time6": "18:00",
-      "start_lunch6": "12:00",
+      "work6": "false",
+      "start_time6": "13:00",
+      "end_time6": "13:00",
+      "start_lunch6": "13:00",
       "end_lunch6": "13:00",
       "day_of_week7": "Sunday",
-      "work7": true,
-      "start_time7": "09:00",
-      "end_time7": "18:00",
-      "start_lunch7": "12:00",
+      "work7": "false",
+      "start_time7": "13:00",
+      "end_time7": "13:00",
+      "start_lunch7": "13:00",
       "end_lunch7": "13:00"
 }
 ###
@@ -131,4 +131,26 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 // Grab availability data from business
 GET http://localhost:5000/api/availability/work
 Content-Type: application/json
-###
+### 
+
+// BussinessInfo test route
+GET http://localhost:5000/api/businessinfo
+Content-Type: application/json
+### 
+
+// BussinessInfo test route
+POST http://localhost:5000/api/businessinfo
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+
+{
+"company":"get kut up g",
+"address": "west killa street g",
+"city": "sackramento Killas",
+"state": "Cali baby",
+"zip": "95201",
+"snapchat": "kutsSnap",
+"instagram": "GetCutz",
+"tiktok": "watchMeDance"
+}
+### 
