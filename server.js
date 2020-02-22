@@ -33,6 +33,7 @@ app.use(express.json({ extended: false }));
 app.use("/api/login", require("./api/login"));
 app.use("/api/availability", require("./api/availability"));
 app.use("/api/businessinfo", require("./api/businessinfo"));
+app.use("/api/services", require("./api/services"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
