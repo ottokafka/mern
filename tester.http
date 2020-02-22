@@ -2,7 +2,7 @@
 // test Token
 GET http://localhost:5000/api/login/token
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwMjBjYTNkZTc2NTBmOTUzNDRjZSJ9LCJpYXQiOjE1ODIzNjcyNDQsImV4cCI6MTU4NTk2NzI0NH0.nDg0jX_5KfEdk0UIWrbCzxYrZlLacfRHQv373vx378k
 ###
 
 // test Token and see all user data 
@@ -44,7 +44,7 @@ Content-Type: application/json
 {
     "firstName" : "Otto",
     "lastName": "kafka",
-    "email": "businessKakfa13@email.com",
+    "email": "businessKakfa1@email.com",
     "password": "1234567890",
     "phoneNumber": "123456789"
 }
@@ -80,10 +80,10 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 // Availability
 POST http://localhost:5000/api/availability
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 
 {
-       "day_of_week1": "Monday",
+      "day_of_week1": "Monday",
       "work1": "true",
       "start_time1": "13:00",
       "end_time1": "13:00",
@@ -126,11 +126,14 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
       "start_lunch7": "13:00",
       "end_lunch7": "13:00"
 }
+
 ###
 
 // Grab availability data from business
 GET http://localhost:5000/api/availability/work
 Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+
 ### 
 
 // BussinessInfo test route
@@ -141,7 +144,7 @@ Content-Type: application/json
 // BussinessInfo  route
 POST http://localhost:5000/api/businessinfo
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 
 {
 "company":"get kut up g",
@@ -160,28 +163,10 @@ GET http://localhost:5000/api/services/test
 Content-Type: application/json
 ### 
 
-
-// services to test hairstyle 
-POST http://localhost:5000/api/businessinfo
-Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
-
-{
-"company":"get kut up g",
-"address": "west killa street g",
-"city": "sackramento Killas",
-"state": "Cali baby",
-"zip": "95201",
-"snapchat": "kutsSnap",
-"instagram": "GetCutz",
-"tiktok": "watchMeDance"
-}
-### 
-
 // services for hairstyles and cost saving to db
 POST http://localhost:5000/api/services
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwMjBjYTNkZTc2NTBmOTUzNDRjZSJ9LCJpYXQiOjE1ODIzNjcyNDQsImV4cCI6MTU4NTk2NzI0NH0.nDg0jX_5KfEdk0UIWrbCzxYrZlLacfRHQv373vx378k
 
 {
 "lineUp":15,
@@ -206,4 +191,28 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 "hairTint": 100,
 "rootTouchUp": 150
 }
+###  
+
+//  Bussiness info all
+GET http://localhost:5000/api/businessinfo/all
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+
+### 
+
+
+//  Bussiness info by db :id
+GET http://localhost:5000/api/businessinfo/5e510569571a52acd24ad511
+Content-Type: application/json
+### 
+
+//  Bussiness by business :id
+GET http://localhost:5000/api/business/5e4feaf7571a52acd23029df
+Content-Type: application/json
+### 
+
+// Delete a Bussiness 
+DELETE  http://localhost:5000/api/businessinfo
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 ### 

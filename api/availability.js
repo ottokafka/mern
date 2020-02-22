@@ -130,14 +130,23 @@ router.post("/", token, async (req, res) => {
   }
 });
 
-router.get("/work", async (req, res) => {
-  let availability = await Availability.findOne({
-    business: "5e4ec3c7f50837224839ede4"
-  });
+// GET availability of the business
+router.get("/work", token, async (req, res) => {
+  let availability = await Availability.find({ business: req.business.id });
 
   console.log(availability);
   res.json(availability);
 });
+
+// // test get business availability by id
+// router.get("/work", async (req, res) => {
+//   let availability = await Availability.findOne({
+//     business: "5e4ec3c7f50837224839ede4"
+//   });
+
+//   console.log(availability);
+//   res.json(availability);
+// });
 
 // export the router
 module.exports = router;
