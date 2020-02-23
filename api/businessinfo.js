@@ -11,6 +11,30 @@ router.get("/test", async (req, res) => {
   res.json("business info Get test route is working");
 });
 
+// @route    GET api/business/me
+// @desc     Get current users business
+// @access   Private
+router.get("/me", token, async (req, res) => {
+  console.log(req.business.id);
+
+  try {
+    const businessInfo = await BusinessInfo.findOne({
+      business: req.business.id
+    }).populate("business", ["firstName"]);
+
+    console.log(businessInfo);
+
+    if (!businessInfo) {
+      return res.status(400).json({ msg: "There is no profile for this user" });
+    }
+
+    res.json(businessInfo);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route    POST api/businessinfo
 // @desc     Create or update business info
 // @access   Private
@@ -71,10 +95,14 @@ router.post("/", token, async (req, res) => {
 // @access   Public
 router.get("/all", token, async (req, res) => {
   try {
-    const businesses = await BusinessInfo.find().sort({ date: -1 });
+    const businesses = await BusinessInfo.find().populate("business", [
+      "firstName",
+      "email",
+      "phoneNumber"
+    ]);
     console.log(businesses);
 
-    const availability = await Availability.find({ business: req.business.id });
+    const availability = await Availability.find();
     console.log(availability);
 
     res.json({ AllBusiness: businesses, AllAvailabiltiy: availability });
@@ -117,6 +145,8 @@ router.delete("/", token, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+// build an api that has all accessiated business info related to it from the token
 
 // export the router
 module.exports = router;

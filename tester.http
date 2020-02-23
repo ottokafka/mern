@@ -31,20 +31,33 @@ POST http://localhost:5000/api/login/client
 Content-Type: application/json
 
 {
-    "name" : "Otto3",
+    "name" : "Otto1",
     "email": "Kafka5@email.com",
     "password": "1234567890"
 }
 ###
 
-// Business registration 
+// Business registration 1
 POST http://localhost:5000/api/login/business
 Content-Type: application/json
 
 {
-    "firstName" : "Otto",
-    "lastName": "kafka",
-    "email": "businessKakfa1@email.com",
+    "firstName" : "John",
+    "lastName": "Mick",
+    "email": "johnmick1@email.com",
+    "password": "1234567890",
+    "phoneNumber": "123456789"
+}
+###
+
+// Business registration 2
+POST http://localhost:5000/api/login/business
+Content-Type: application/json
+
+{
+    "firstName" : "sam",
+    "lastName": "smith",
+    "email": "smithbusiness1@email.com",
     "password": "1234567890",
     "phoneNumber": "123456789"
 }
@@ -80,7 +93,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 // Availability
 POST http://localhost:5000/api/availability
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTE4YWEwMmQ5MWMzNWJmMjVjYjIyMSJ9LCJpYXQiOjE1ODI0MDIyMDksImV4cCI6MTU4NjAwMjIwOX0.NhJPptdElqXXzUt_CNjt2j78Q2j64cdWTHSGXhsxUmM
 
 {
       "day_of_week1": "Monday",
@@ -144,13 +157,13 @@ Content-Type: application/json
 // BussinessInfo  route
 POST http://localhost:5000/api/businessinfo
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTI4MmI4ZDY2Mzk5NjkxZmQzMWIyOSJ9LCJpYXQiOjE1ODI0NjU3MjAsImV4cCI6MTU4NjA2NTcyMH0.SAeiyZ1178MuCEx3FklhFclwLWZS2Hi3FZyxRPxRXR4
 
 {
-"company":"get kut up g",
-"address": "west killa street g",
-"city": "sackramento Killas",
-"state": "Cali baby",
+"company":"John Mick",
+"address": "999 Broklen d street",
+"city": "Sacramento",
+"state": "California",
 "zip": "95201",
 "snapchat": "kutsSnap",
 "instagram": "GetCutz",
@@ -166,7 +179,7 @@ Content-Type: application/json
 // services for hairstyles and cost saving to db
 POST http://localhost:5000/api/services
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwMjBjYTNkZTc2NTBmOTUzNDRjZSJ9LCJpYXQiOjE1ODIzNjcyNDQsImV4cCI6MTU4NTk2NzI0NH0.nDg0jX_5KfEdk0UIWrbCzxYrZlLacfRHQv373vx378k
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 
 {
 "lineUp":15,
@@ -200,7 +213,6 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 
 ### 
 
-
 //  Bussiness info by db :id
 GET http://localhost:5000/api/businessinfo/5e510569571a52acd24ad511
 Content-Type: application/json
@@ -216,3 +228,12 @@ DELETE  http://localhost:5000/api/businessinfo
 Content-Type: application/json
 x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 ### 
+
+//  Bussiness me
+GET http://localhost:5000/api/businessinfo/me
+Content-Type: application/json
+x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTI4MmI4ZDY2Mzk5NjkxZmQzMWIyOSJ9LCJpYXQiOjE1ODI0NjU3MjAsImV4cCI6MTU4NjA2NTcyMH0.SAeiyZ1178MuCEx3FklhFclwLWZS2Hi3FZyxRPxRXR4
+
+### 
+//todo
+// How to access this business info from the client side
