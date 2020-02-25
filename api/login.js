@@ -5,6 +5,21 @@ const Business = require("../models/Business");
 const jwt = require("jsonwebtoken");
 const token = require("../token");
 
+// @route    GET api/login
+// @desc     Get business by token
+// @access   Private
+router.get("/", token, async (req, res) => {
+  try {
+    const business = await Business.findById(req.business.id).select(
+      "-password"
+    );
+    res.json(business);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // @route    GET api/login/token
 // @desc     test the token
 // @access   Public
@@ -94,21 +109,27 @@ router.post("/businessLogin", async (req, res) => {
 
   try {
     // search db for email
-    let businessInfo = await Business.findOne({ email });
+    let business = await Business.findOne({ email });
 
-    console.log(businessInfo.email);
+    console.log(business);
 
-    if (businessInfo.email !== email) {
+    if (business.email !== email) {
       return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
 
-    if (password !== businessInfo.password) {
+    if (password !== business.password) {
       return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
     }
+
+    const payload = {
+      business: {
+        id: business.id
+      }
+    };
 
     // give jwt to business
     jwt.sign(
-      { business: { id: business.id } },
+      payload,
       "gateway",
       {
         expiresIn: 360000
@@ -119,7 +140,7 @@ router.post("/businessLogin", async (req, res) => {
       }
     );
   } catch (err) {
-    console.log("server error");
+    console.error(err.message);
     res.json("server error");
   }
 });

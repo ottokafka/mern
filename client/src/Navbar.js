@@ -38,7 +38,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li className="nav-item">
-            <Link className="nav-link " to="business">
+            <Link className="nav-link " to="register_business">
               Setup my Business
             </Link>
           </li>

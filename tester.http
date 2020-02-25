@@ -57,8 +57,8 @@ Content-Type: application/json
 {
     "firstName" : "sam",
     "lastName": "smith",
-    "email": "smithbusiness1@email.com",
-    "password": "1234567890",
+    "email": "samb3@email.com",
+    "password": "123456",
     "phoneNumber": "123456789"
 }
 ###
@@ -68,8 +68,8 @@ POST http://localhost:5000/api/login/businessLogin
 Content-Type: application/json
 
 {
-     "email": "businessKakfa8@email.com",
-     "password": "1234567890"
+     "email": "samb3@email.com",
+     "password": "123456"
 }
 ###
 
@@ -237,3 +237,10 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 ### 
 //todo
 // How to access this business info from the client side
+
+
+//  Users 
+GET http://localhost:5000/api/user/test
+Content-Type: application/json
+
+### 
