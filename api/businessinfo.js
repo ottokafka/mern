@@ -11,18 +11,16 @@ router.get("/test", async (req, res) => {
   res.json("business info Get test route is working");
 });
 
-// @route    GET api/business/me
+// @route    GET api/businessinfo/me
 // @desc     Get current users business
 // @access   Private
 router.get("/me", token, async (req, res) => {
-  console.log(req.business.id);
-
   try {
     const businessInfo = await BusinessInfo.findOne({
       business: req.business.id
     }).populate("business", ["firstName"]);
 
-    console.log(businessInfo);
+    // console.log(businessInfo);
 
     if (!businessInfo) {
       return res.status(400).json({ msg: "There is no profile for this user" });

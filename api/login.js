@@ -52,8 +52,6 @@ router.post("/test", async (req, res) => {
   res.json("Login Post test route is working");
 });
 
-// skip encrypting password shit
-
 // @route    POST api/login/business
 // @desc     Register business
 // @access   Public
@@ -107,6 +105,9 @@ router.post("/business", async (req, res) => {
 router.post("/businessLogin", async (req, res) => {
   const { email, password } = req.body;
 
+  console.log("Start");
+  console.log(email);
+
   try {
     // search db for email
     let business = await Business.findOne({ email });
@@ -126,6 +127,8 @@ router.post("/businessLogin", async (req, res) => {
         id: business.id
       }
     };
+    console.log("Created our payload");
+    console.log(payload);
 
     // give jwt to business
     jwt.sign(

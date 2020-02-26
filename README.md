@@ -24,3 +24,8 @@ todo
 4. availability page = Create / add availability page
 5. service page = Create / add services page
 6.
+
+todo:
+validate register fields
+refactor names for api routes -
+Dashboard for business

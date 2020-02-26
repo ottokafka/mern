@@ -2,11 +2,11 @@ import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import { setAlert } from "../redux/actions/alert";
-import { registerBusiness } from "../redux/actions/authBusiness";
+import { register } from "../redux/actions/authBusiness";
 import PropTypes from "prop-types";
 import fade1 from "../img/fade1.jpeg";
 
-const Register = ({ setAlert, registerBusiness, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -33,12 +33,12 @@ const Register = ({ setAlert, registerBusiness, isAuthenticated }) => {
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      registerBusiness({ firstName, lastName, email, password, phoneNumber });
+      register({ firstName, lastName, email, password, phoneNumber });
     }
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/login_business" />;
+    return <Redirect to="/dashboard_business" />;
   }
 
   return (
@@ -47,9 +47,7 @@ const Register = ({ setAlert, registerBusiness, isAuthenticated }) => {
         <form className="form-signin" onSubmit={e => onSubmit(e)}>
           <img className="mb-4" src={fade1} alt="" width="72" height="72" />
           <h1 className="h3 mb-3 font-weight-normal">Create a Business</h1>
-          <label for="inputEmail" className="sr-only">
-            Email address
-          </label>
+
           <input
             className="form-control"
             type="text"
@@ -74,9 +72,7 @@ const Register = ({ setAlert, registerBusiness, isAuthenticated }) => {
             value={email}
             onChange={e => onChange(e)}
           />
-          <label for="inputPassword" className="sr-only">
-            Password
-          </label>
+
           <input
             className="form-control"
             type="password"
@@ -125,7 +121,7 @@ const Register = ({ setAlert, registerBusiness, isAuthenticated }) => {
 
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
-  registerBusiness: PropTypes.func.isRequired,
+  register: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool
 };
 
@@ -133,6 +129,4 @@ const mapStateToProps = state => ({
   isAuthenticated: state.authBusiness.isAuthenticated
 });
 
-export default connect(mapStateToProps, { setAlert, registerBusiness })(
-  Register
-);
+export default connect(mapStateToProps, { setAlert, register })(Register);

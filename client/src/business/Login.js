@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
-import { loginBusiness } from "../redux/actions/authBusiness";
+import { login } from "../redux/actions/authBusiness";
 import fade1 from "../img/fade1.jpeg";
 
 const Login = ({ login, isAuthenticated }) => {
@@ -18,11 +18,11 @@ const Login = ({ login, isAuthenticated }) => {
 
   const onSubmit = async e => {
     e.preventDefault();
-    loginBusiness({ email, password });
+    login({ email, password });
   };
 
-  if (isAuthenticated) {
-    return <Redirect to="/dashboard_business" />;
+  if (isAuthenticated && localStorage.token) {
+    // return <Redirect to="/dashboard_business" />;
   }
 
   return (
@@ -50,11 +50,11 @@ const Login = ({ login, isAuthenticated }) => {
             onChange={e => onChange(e)}
           />
 
-          <div className="checkbox mb-3">
+          {/* <div className="checkbox mb-3">
             <label>
               <input type="checkbox" value="remember-me" /> Remember me
             </label>
-          </div>
+          </div> */}
           <input
             className="btn btn-lg btn-primary btn-block"
             type="submit"
@@ -74,13 +74,11 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  authBusiness: PropTypes.object.isRequired,
-  errors: PropTypes.object.isRequired
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  authBusiness: state.authBusiness,
-  errors: state.errors
+  isAuthenticated: state.authBusiness.isAuthenticated
 });
 
-export default connect(mapStateToProps, { loginBusiness })(Login);
+export default connect(mapStateToProps, { login })(Login);

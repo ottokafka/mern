@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-// const keys = require("../../config/keys");
+const keys = require("../config/keys");
 const passport = require("passport");
 
 // Load Input Validation
@@ -30,8 +30,8 @@ router.post("/register", (req, res) => {
 
   User.findOne({ email: req.body.email }).then(user => {
     if (user) {
-      errors.email = "Email already exists";
-      return res.status(400).json(errors);
+      // errors.email = "Email already exists";
+      return res.status(400).json("Email exists already");
     } else {
       const newUser = new User({
         name: req.body.name,

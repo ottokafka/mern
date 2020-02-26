@@ -1,29 +1,35 @@
 import React, { Fragment, useState } from "react";
 import { connect } from "react-redux";
 import { Link, Redirect } from "react-router-dom";
-
-import { login } from "../redux/actions/authBusiness";
+import { setAlert } from "../redux/actions/alert";
+import { registerUser } from "../redux/actions/authActions";
 import PropTypes from "prop-types";
 import fade1 from "../img/fade1.jpeg";
 
-const Login = ({ login, isAuthenticated }) => {
+const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
-    password: ""
+    password: "",
+    password2: ""
   });
 
-  const { email, password } = formData;
+  const { name, email, password, password2 } = formData;
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = async e => {
     e.preventDefault();
-    login({ email, password });
+    if (password !== password2) {
+      setAlert("Passwords do not match", "danger");
+    } else {
+      registerUser({ name, email, password });
+    }
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/dashboard_business" />;
+    return <Redirect to="/user_dashboard" />;
   }
 
   return (
@@ -31,31 +37,44 @@ const Login = ({ login, isAuthenticated }) => {
       <div className="text-center">
         <form className="form-signin" onSubmit={e => onSubmit(e)}>
           <img className="mb-4" src={fade1} alt="" width="72" height="72" />
-          <h1 className="h3 mb-3 font-weight-normal">Create a Business</h1>
-          <label for="inputEmail" className="sr-only">
-            Email address
-          </label>
+          <h1 className="h3 mb-3 font-weight-normal">Create a Account</h1>
 
+          <input
+            className="form-control"
+            type="text"
+            placeholder="name"
+            name="name"
+            value={name}
+            onChange={e => onChange(e)}
+          />
           <input
             className="form-control"
             type="email"
             placeholder="Email Address"
             name="email"
+            autoComplete="username"
             value={email}
             onChange={e => onChange(e)}
           />
-          <label for="inputPassword" className="sr-only">
-            Password
-          </label>
+
           <input
             className="form-control"
             type="password"
             placeholder="Password"
             name="password"
+            autoComplete="username"
             value={password}
             onChange={e => onChange(e)}
           />
-
+          <input
+            className="form-control"
+            type="password"
+            placeholder="Confirm Password"
+            name="password2"
+            autoComplete="username"
+            value={password2}
+            onChange={e => onChange(e)}
+          />
           <div className="checkbox mb-3">
             <label>
               <input type="checkbox" value="remember-me" /> Remember me
@@ -64,7 +83,7 @@ const Login = ({ login, isAuthenticated }) => {
           <input
             className="btn btn-lg btn-primary btn-block"
             type="submit"
-            value="Login business"
+            value="Sign up"
           />
 
           <p className="mt-5 mb-3 text-muted">© 2020</p>
@@ -78,13 +97,17 @@ const Login = ({ login, isAuthenticated }) => {
   );
 };
 
-Login.propTypes = {
-  login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+UserRegister.propTypes = {
+  registerUser: PropTypes.func.isRequired
+  //   auth: PropTypes.object.isRequired
+  //   errors: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.authBusiness.isAuthenticated
+  auth: state.auth,
+  errors: state.errors
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { setAlert, registerUser })(
+  UserRegister
+);

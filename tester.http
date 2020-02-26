@@ -2,7 +2,7 @@
 // test Token
 GET http://localhost:5000/api/login/token
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwMjBjYTNkZTc2NTBmOTUzNDRjZSJ9LCJpYXQiOjE1ODIzNjcyNDQsImV4cCI6MTU4NTk2NzI0NH0.nDg0jX_5KfEdk0UIWrbCzxYrZlLacfRHQv373vx378k
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
 ###
 
 // test Token and see all user data 
@@ -44,8 +44,8 @@ Content-Type: application/json
 {
     "firstName" : "John",
     "lastName": "Mick",
-    "email": "johnmick1@email.com",
-    "password": "1234567890",
+    "email": "dude1@email.com",
+    "password": "123456",
     "phoneNumber": "123456789"
 }
 ###
@@ -68,7 +68,7 @@ POST http://localhost:5000/api/login/businessLogin
 Content-Type: application/json
 
 {
-     "email": "samb3@email.com",
+     "email": "sam1234@email.com",
      "password": "123456"
 }
 ###
@@ -157,11 +157,11 @@ Content-Type: application/json
 // BussinessInfo  route
 POST http://localhost:5000/api/businessinfo
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTI4MmI4ZDY2Mzk5NjkxZmQzMWIyOSJ9LCJpYXQiOjE1ODI0NjU3MjAsImV4cCI6MTU4NjA2NTcyMH0.SAeiyZ1178MuCEx3FklhFclwLWZS2Hi3FZyxRPxRXR4
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
 
 {
-"company":"John Mick",
-"address": "999 Broklen d street",
+"company":"Fuck",
+"address": "6699 Broklen d street",
 "city": "Sacramento",
 "state": "California",
 "zip": "95201",
@@ -232,7 +232,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 //  Bussiness me
 GET http://localhost:5000/api/businessinfo/me
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTI4MmI4ZDY2Mzk5NjkxZmQzMWIyOSJ9LCJpYXQiOjE1ODI0NjU3MjAsImV4cCI6MTU4NjA2NTcyMH0.SAeiyZ1178MuCEx3FklhFclwLWZS2Hi3FZyxRPxRXR4
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
 
 ### 
 //todo
