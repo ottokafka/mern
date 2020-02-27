@@ -24,26 +24,78 @@ const DashboardBusiness = ({
   if (profileBusiness === null) {
     return (
       <Fragment>
-        <h5> You dont have a profile so Create a profile</h5>
-        <button>Create now</button>
-        <h1 className="large text-primary">Dashboard</h1>
-        <p className="lead">
-          <i className="fas fa-user" /> Welcome {business && business.firstName}
-        </p>
-        <p>
-          your info <strong>{business && business.email}</strong>
-        </p>
-        <p>
-          {" "}
-          Phone <strong>{business && business.phoneNumber}</strong>
-        </p>
+        <div className="container">
+          <div className="card-deck mb-3 text-center">
+            {/* single card below */}
+            <div className="card mb-4 shadow-sm">
+              <div className="card-header">
+                <h4 className="my-0 font-weight-normal">
+                  Create Business Info
+                </h4>
+              </div>
+              <div className="card-body">
+                <h1 className="card-title pricing-card-title">
+                  location <small className="text-muted"></small>
+                </h1>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li>Address: </li>
+                  <li>City:</li>
+                  <li>State:</li>
+                  <li>Zip:</li>
+                </ul>
+                <Link
+                  to="create_profile_business"
+                  className="btn btn-lg btn-block btn-outline-primary"
+                >
+                  Start
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </Fragment>
     );
   } else {
     return (
       <Fragment>
-        <h1>Show profile</h1>
-        <div>{business && business.firstName}</div>
+        <div className="container">
+          <div className="card-deck mb-3 text-center">
+            {/* single card below */}
+            <div className="card mb-4 shadow-sm">
+              <div className="card-header">
+                <h4 className="my-0 font-weight-normal">
+                  Create Business Info
+                </h4>
+              </div>
+              <div className="card-body">
+                <h1 className="card-title pricing-card-title">
+                  location <small className="text-muted"></small>
+                </h1>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li>
+                    Address:{" "}
+                    {profileBusiness && profileBusiness.location.address}
+                  </li>
+                  <li>
+                    City: {profileBusiness && profileBusiness.location.city}
+                  </li>
+                  <li>
+                    State: {profileBusiness && profileBusiness.location.state}
+                  </li>
+                  <li>
+                    Zip: {profileBusiness && profileBusiness.location.zip}
+                  </li>
+                </ul>
+                <Link
+                  to="create_profile_business"
+                  className="btn btn-lg btn-block btn-outline-primary"
+                >
+                  Edit
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
       </Fragment>
     );
   }

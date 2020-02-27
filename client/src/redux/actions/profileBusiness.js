@@ -11,9 +11,11 @@ import {
   GET_REPOS
 } from "../types";
 
+const token = localStorage.token;
+
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
-  const token = localStorage.token;
+  //   const token = localStorage.token;
   //   console.log(token);
 
   const config = {
@@ -33,9 +35,10 @@ export const getCurrentProfile = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: err
     });
   }
+  //   payload: { msg: err.response.statusText, status: err.response.status }
 };
 
 // Get all profiles
@@ -100,11 +103,12 @@ export const createProfile = (
   try {
     const config = {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        token: token
       }
     };
 
-    const res = await axios.post("/api/profile", formData, config);
+    const res = await axios.post("/api/businessinfo", formData, config);
 
     dispatch({
       type: GET_PROFILE,
@@ -114,14 +118,16 @@ export const createProfile = (
     dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
 
     if (!edit) {
-      history.push("/dashboard");
+      history.push("/dashboard_business");
     }
   } catch (err) {
-    const errors = err.response.data.errors;
+    console.log(err);
 
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
-    }
+    // const errors = err.response.data.errors;
+
+    // if (errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    // }
 
     dispatch({
       type: PROFILE_ERROR,
