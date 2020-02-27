@@ -55,7 +55,45 @@ const DashboardBusiness = ({
         </div>
       </Fragment>
     );
-  } else {
+  } else if (profileBusiness.location.address !== null) {
+    return (
+      <Fragment>
+        <div className="container">
+          <div className="card-deck mb-3 text-center">
+            {/* single card below */}
+            <div className="card mb-4 shadow-sm">
+              <div className="card-header">
+                <h4 className="my-0 font-weight-normal">
+                  Whats your availability?
+                </h4>
+              </div>
+              <div className="card-body">
+                <h1 className="card-title pricing-card-title">
+                  Availability <small className="text-muted"></small>
+                </h1>
+                <ul className="list-unstyled mt-3 mb-4">
+                  <li>Monday: {}</li>
+                  <li>Tuesday: {}</li>
+                  <li>Wednesday: {}</li>
+                  <li>Thursday: {}</li>
+                  <li>Friday: {}</li>
+                  <li>Saturday: {}</li>
+                  <li>Sunday: {}</li>
+                </ul>
+                <Link
+                  to="add_availability"
+                  className="btn btn-lg btn-block btn-outline-primary"
+                >
+                  Add Availability
+                </Link>
+              </div>
+            </div>
+            {/* // single card end  */}
+          </div>
+        </div>
+      </Fragment>
+    );
+  } else if (profileBusiness.location.address !== null) {
     return (
       <Fragment>
         <div className="container">
@@ -73,7 +111,7 @@ const DashboardBusiness = ({
                 </h1>
                 <ul className="list-unstyled mt-3 mb-4">
                   <li>
-                    Address:{" "}
+                    Address:
                     {profileBusiness && profileBusiness.location.address}
                   </li>
                   <li>
@@ -98,6 +136,9 @@ const DashboardBusiness = ({
         </div>
       </Fragment>
     );
+  } else {
+  }
+  {
   }
 };
 

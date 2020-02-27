@@ -136,31 +136,33 @@ export const createProfile = (
   }
 };
 
-// Add Experience
-export const addExperience = (formData, history) => async dispatch => {
+// Add Availability
+export const addAvailability = (formData, history) => async dispatch => {
   try {
     const config = {
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        token: token
       }
     };
 
-    const res = await axios.put("/api/profile/experience", formData, config);
+    const res = await axios.put("/api/availability", formData, config);
 
     dispatch({
       type: UPDATE_PROFILE,
       payload: res.data
     });
 
-    dispatch(setAlert("Experience Added", "success"));
+    dispatch(setAlert("Availability Added", "success"));
 
-    history.push("/dashboard");
+    history.push("/dashboard_business");
   } catch (err) {
-    const errors = err.response.data.errors;
+    console.log(err);
+    // const errors = err.response.data.errors;
 
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
-    }
+    // if (errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    // }
 
     dispatch({
       type: PROFILE_ERROR,

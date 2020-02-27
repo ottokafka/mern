@@ -8,7 +8,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3
 // test Token and see all user data 
 GET http://localhost:5000/api/login/tokenUserID
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
 ###
 
 // test GET api
@@ -93,7 +93,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 // Availability
 POST http://localhost:5000/api/availability
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTE4YWEwMmQ5MWMzNWJmMjVjYjIyMSJ9LCJpYXQiOjE1ODI0MDIyMDksImV4cCI6MTU4NjAwMjIwOX0.NhJPptdElqXXzUt_CNjt2j78Q2j64cdWTHSGXhsxUmM
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
 
 {
       "day_of_week1": "Monday",
@@ -209,17 +209,17 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 //  Bussiness info all
 GET http://localhost:5000/api/businessinfo/all
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
 
 ### 
 
 //  Bussiness info by db :id
-GET http://localhost:5000/api/businessinfo/5e510569571a52acd24ad511
+GET http://localhost:5000/api/businessinfo/5e511ea4571a52acd24d373f
 Content-Type: application/json
 ### 
 
 //  Bussiness by business :id
-GET http://localhost:5000/api/business/5e4feaf7571a52acd23029df
+GET http://localhost:5000/api/business/5e511ea4571a52acd24d373f
 Content-Type: application/json
 ### 
 

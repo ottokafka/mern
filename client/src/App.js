@@ -10,6 +10,7 @@ import RegisterBusiness from "./business/Register";
 import LoginBusiness from "./business/Login";
 import DashboardBusiness from "./business/DashboardBusiness";
 import CreateProfileBusiness from "./business/CreateProfileBusiness";
+import AddAvailability from "./business/AddAvailability";
 import PrivateRouteBusiness from "./business/PrivateRouteBusiness";
 
 //Redux
@@ -62,6 +63,7 @@ const App = () => {
               path="/create_profile_business"
               component={CreateProfileBusiness}
             />
+            <Route exact path="/add_availability" component={AddAvailability} />
           </Switch>
         </Router>
       </Fragment>
