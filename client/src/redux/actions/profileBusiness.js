@@ -26,8 +26,7 @@ export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get("/api/businessinfo/me", config);
     // console.log("This is causing the app to have an error");
-    const res2 = await axios.get("/api/availability/me", config);
-    console.log(res.data + res2.data);
+    // const res2 = await axios.get("/api/availability/me", config);
 
     dispatch({
       type: GET_PROFILE,

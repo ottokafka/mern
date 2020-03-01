@@ -4,12 +4,10 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
   GET_PROFILES,
-  GET_REPOS,
-  GET_AVAILABILITY
+  GET_REPOS
 } from "../types";
 
 const initialState = {
-  availability: null,
   profileBusiness: null,
   profiles: [],
   repos: [],
@@ -27,12 +25,6 @@ export default function(state = initialState, action) {
         ...state,
         profileBusiness: payload,
         loading: false
-      };
-
-    case GET_AVAILABILITY:
-      return {
-        ...state,
-        availability: payload2
       };
 
     case UPDATE_PROFILE:

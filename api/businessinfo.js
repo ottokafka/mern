@@ -52,27 +52,55 @@ router.post("/", token, async (req, res) => {
     tiktok
   } = req.body;
 
-  // Build business info object
-  const businessInfoFields = {};
-  businessInfoFields.business = req.business.id;
-  if (company) businessInfoFields.company = company;
+  // // Build business info object
+  // const businessInfoFields = {};
+  // businessInfoFields.business = req.business.id;
+  // if (company) businessInfoFields.company = company;
 
-  // Build business location object
-  businessInfoFields.location = {};
-  if (address) businessInfoFields.location.address = address;
-  if (city) businessInfoFields.location.city = city;
-  if (state) businessInfoFields.location.state = state;
-  if (zip) businessInfoFields.location.zip = zip;
+  // // Build business location object
+  // businessInfoFields.location = {};
+  // if (address) businessInfoFields.location.address = address;
+  // if (city) businessInfoFields.location.city = city;
+  // if (state) businessInfoFields.location.state = state;
+  // if (zip) businessInfoFields.location.zip = zip;
 
-  // Build social object
-  businessInfoFields.social = {};
-  if (youtube) businessInfoFields.social.youtube = youtube;
-  if (twitter) businessInfoFields.social.twitter = twitter;
-  if (facebook) businessInfoFields.social.facebook = facebook;
-  if (linkedin) businessInfoFields.social.linkedin = linkedin;
-  if (instagram) businessInfoFields.social.instagram = instagram;
-  if (snapchat) businessInfoFields.social.snapchat = snapchat;
-  if (tiktok) businessInfoFields.social.tiktok = tiktok;
+  // // Build social object
+  // businessInfoFields.social = {};
+  // if (youtube) businessInfoFields.social.youtube = youtube;
+  // if (twitter) businessInfoFields.social.twitter = twitter;
+  // if (facebook) businessInfoFields.social.facebook = facebook;
+  // if (linkedin) businessInfoFields.social.linkedin = linkedin;
+  // if (instagram) businessInfoFields.social.instagram = instagram;
+  // if (snapchat) businessInfoFields.social.snapchat = snapchat;
+  // if (tiktok) businessInfoFields.social.tiktok = tiktok;
+
+  const businessInfoFields = {
+    business: req.business.id,
+    company
+  };
+
+  const locationFields = {
+    address,
+    city,
+    state,
+    zip
+  };
+
+  businessInfoFields.location = locationFields;
+
+  const socialFields = {
+    youtube,
+    twitter,
+    facebook,
+    linkedin,
+    instagram,
+    snapchat,
+    tiktok
+  };
+
+  businessInfoFields.social = socialFields;
+
+  console.log(businessInfoFields);
 
   try {
     // Using upsert option (creates new doc if no match is found):
