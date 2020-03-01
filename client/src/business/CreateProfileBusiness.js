@@ -59,86 +59,68 @@ const CreateProfileBusiness = ({
   }, [getCurrentProfile]);
 
   return loading && profileBusiness === null ? (
-    // <Redirect to="/dashboard" />
+    // <Redirect to="/dashboard_business" />
     <p></p>
   ) : (
-    <Fragment>
-      <h1 className="large text-primary">Create Your Business</h1>
-      <p className="lead">
-        <i className="fas fa-user" /> Let's get some information to make your
-        Business stand out
-      </p>
-      <small>* = required field</small>
-      <form className="form" onSubmit={onSubmit}>
-        <div className="form-group">
+    <Fragment className="container">
+      <div className="container text-center">
+        <form className="form-signin" onSubmit={e => onSubmit(e)}>
+          <img className="mb-4" src={""} alt="" width="72" height="72" />
+          <h1 className="h3 mb-3 font-weight-normal">Location Information</h1>
+
           <input
+            className="form-control"
             type="text"
             placeholder="Address"
             name="address"
             value={address}
-            onChange={onChange}
+            onChange={e => onChange(e)}
           />
-          <small className="form-text">The address of your business.</small>
-        </div>
-
-        <div className="form-group">
           <input
+            className="form-control"
             type="text"
             placeholder="city"
             name="city"
             value={city}
-            onChange={onChange}
+            onChange={e => onChange(e)}
           />
-          <small className="form-text">The city of your business.</small>
-        </div>
-
-        <div className="form-group">
           <input
+            className="form-control"
             type="text"
-            placeholder="state"
+            placeholder="State"
             name="state"
             value={state}
-            onChange={onChange}
+            onChange={e => onChange(e)}
           />
-          <small className="form-text">The state of your business.</small>
-        </div>
 
-        <div className="form-group">
           <input
+            className="form-control"
             type="text"
             placeholder="zipcode"
             name="zip"
             value={zip}
-            onChange={onChange}
+            onChange={e => onChange(e)}
           />
-          <small className="form-text">The zip code of your business.</small>
-        </div>
-
-        <div className="form-group">
           <input
+            className="form-control"
             type="text"
-            placeholder="Company"
+            placeholder="Company name"
             name="company"
             value={company}
-            onChange={onChange}
+            onChange={e => onChange(e)}
           />
-          <small className="form-text">Name of your company</small>
-        </div>
 
-        <div className="my-2">
-          <button
-            onClick={() => toggleSocialInputs(!displaySocialInputs)}
-            type="button"
-            className="btn btn-light"
-          >
-            Add Social Network Links
-          </button>
-          <span>Optional</span>
-        </div>
-        {displaySocialInputs && (
-          <Fragment>
-            <div className="form-group social-input">
-              <i className="fab fa-twitter fa-2x" />
+          <div className="mt-2">
+            <button
+              onClick={() => toggleSocialInputs(!displaySocialInputs)}
+              type="button"
+              className="btn btn-light"
+            >
+              Social Media
+            </button>
+          </div>
+          {displaySocialInputs && (
+            <Fragment>
               <input
                 type="text"
                 placeholder="Twitter URL"
@@ -146,10 +128,7 @@ const CreateProfileBusiness = ({
                 value={twitter}
                 onChange={onChange}
               />
-            </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-facebook fa-2x" />
               <input
                 type="text"
                 placeholder="Facebook URL"
@@ -157,10 +136,7 @@ const CreateProfileBusiness = ({
                 value={facebook}
                 onChange={onChange}
               />
-            </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-youtube fa-2x" />
               <input
                 type="text"
                 placeholder="YouTube URL"
@@ -168,10 +144,7 @@ const CreateProfileBusiness = ({
                 value={youtube}
                 onChange={onChange}
               />
-            </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-linkedin fa-2x" />
               <input
                 type="text"
                 placeholder="Linkedin URL"
@@ -179,10 +152,7 @@ const CreateProfileBusiness = ({
                 value={linkedin}
                 onChange={onChange}
               />
-            </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-instagram fa-2x" />
               <input
                 type="text"
                 placeholder="Instagram URL"
@@ -190,10 +160,7 @@ const CreateProfileBusiness = ({
                 value={instagram}
                 onChange={onChange}
               />
-            </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-tiktok fa-2x" />
               <input
                 type="text"
                 placeholder="tiktok URL"
@@ -201,10 +168,7 @@ const CreateProfileBusiness = ({
                 value={tiktok}
                 onChange={onChange}
               />
-            </div>
 
-            <div className="form-group social-input">
-              <i className="fab fa-snapchat fa-2x" />
               <input
                 type="text"
                 placeholder="snapchat URL"
@@ -212,15 +176,20 @@ const CreateProfileBusiness = ({
                 value={snapchat}
                 onChange={onChange}
               />
-            </div>
-          </Fragment>
-        )}
+            </Fragment>
+          )}
 
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard_business">
-          Go Back
-        </Link>
-      </form>
+          <input
+            className="btn btn-lg btn-primary btn-block mt-5"
+            type="submit"
+            value="submit"
+          />
+        </form>
+
+        <p className="mt-1">
+          Already have an account? <Link to="/login_business">Sign In</Link>
+        </p>
+      </div>
     </Fragment>
   );
 };

@@ -132,7 +132,7 @@ export const createProfile = (
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: err
     });
   }
 };
@@ -157,6 +157,43 @@ export const addAvailability = (formData, history) => async dispatch => {
     });
 
     dispatch(setAlert("Availability Added", "success"));
+
+    history.push("/dashboard_business");
+  } catch (err) {
+    console.log(err);
+    // const errors = err.response.data.errors;
+
+    // if (errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    // }
+
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: err
+    });
+  }
+};
+
+// Add Services
+export const addServices = (formData, history) => async dispatch => {
+  try {
+    const token = localStorage.token;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        token: token
+      }
+    };
+
+    const res = await axios.put("/api/services", formData, config);
+    console.log(res.data);
+
+    dispatch({
+      type: UPDATE_PROFILE,
+      payload: res.data
+    });
+
+    dispatch(setAlert("Services Added", "success"));
 
     history.push("/dashboard_business");
   } catch (err) {
