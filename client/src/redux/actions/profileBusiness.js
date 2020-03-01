@@ -8,14 +8,13 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
-  GET_REPOS
+  GET_REPOS,
+  GET_AVAILABILITY
 } from "../types";
-
-const token = localStorage.token;
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
-  //   const token = localStorage.token;
+  const token = localStorage.token;
   //   console.log(token);
 
   const config = {
@@ -27,6 +26,8 @@ export const getCurrentProfile = () => async dispatch => {
   try {
     const res = await axios.get("/api/businessinfo/me", config);
     // console.log("This is causing the app to have an error");
+    const res2 = await axios.get("/api/availability/me", config);
+    console.log(res.data + res2.data);
 
     dispatch({
       type: GET_PROFILE,
@@ -55,7 +56,7 @@ export const getProfiles = () => async dispatch => {
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: err
     });
   }
 };
@@ -101,6 +102,7 @@ export const createProfile = (
   edit = false
 ) => async dispatch => {
   try {
+    const token = localStorage.token;
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -139,6 +141,7 @@ export const createProfile = (
 // Add Availability
 export const addAvailability = (formData, history) => async dispatch => {
   try {
+    const token = localStorage.token;
     const config = {
       headers: {
         "Content-Type": "application/json",
@@ -147,6 +150,7 @@ export const addAvailability = (formData, history) => async dispatch => {
     };
 
     const res = await axios.put("/api/availability", formData, config);
+    console.log(res.data);
 
     dispatch({
       type: UPDATE_PROFILE,
@@ -166,7 +170,7 @@ export const addAvailability = (formData, history) => async dispatch => {
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
+      payload: err
     });
   }
 };

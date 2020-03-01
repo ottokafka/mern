@@ -19,6 +19,7 @@ export const REGISTER_FAIL = "REGISTER_FAIL";
 export const USER_LOADED = "USER_LOADED";
 
 export const GET_PROFILE = "GET_PROFILE";
+export const GET_AVAILABILITY = "GET_AVAILABILITY";
 export const GET_PROFILES = "GET_PROFILES";
 export const GET_REPOS = "GET_REPOS";
 export const UPDATE_PROFILE = "UPDATE_PROFILE";

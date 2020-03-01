@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const Availability = require("../models/Availability");
+const BusinessInfo = require("../models/BusinessInfo");
 const token = require("../token");
 
 // todo build backend that accepts work hours & free time
@@ -11,12 +11,35 @@ router.get("/test", token, async (req, res) => {
   res.json("availability Get test route is working as private route");
 });
 
+// Get availability of business
+// GET api/availability/me
+router.get("/me", token, async (req, res) => {
+  try {
+    const availability = await BusinessInfo.findOne({
+      business: req.business.id
+    });
+
+    // console.log(businessInfo);
+
+    if (!availability) {
+      return res
+        .status(400)
+        .json({ msg: "There is no availability for this business" });
+    }
+
+    res.json(availability);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
 // create or update availability
 
 // @route    POST api/profile
 // @desc     Create or update user profile
 // @access   Private
-router.post("/", token, async (req, res) => {
+router.put("/", token, async (req, res) => {
   const {
     day_of_week1,
     work1,
@@ -117,7 +140,7 @@ router.post("/", token, async (req, res) => {
 
   try {
     // Using upsert option (creates new doc if no match is found):
-    let availability = await Availability.findOneAndUpdate(
+    let availability = await BusinessInfo.findOneAndUpdate(
       { business: req.business.id },
       { $set: availabilityFields },
       { new: true, upsert: true }
@@ -132,7 +155,7 @@ router.post("/", token, async (req, res) => {
 
 // GET availability of the business
 router.get("/work", token, async (req, res) => {
-  let availability = await Availability.find({ business: req.business.id });
+  let availability = await BusinessInfo.find({ business: req.business.id });
 
   console.log(availability);
   res.json(availability);
@@ -140,7 +163,7 @@ router.get("/work", token, async (req, res) => {
 
 // // test get business availability by id
 // router.get("/work", async (req, res) => {
-//   let availability = await Availability.findOne({
+//   let availability = await BusinessInfo.findOne({
 //     business: "5e4ec3c7f50837224839ede4"
 //   });
 

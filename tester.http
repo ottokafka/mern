@@ -93,7 +93,7 @@ x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlN
 // Availability
 POST http://localhost:5000/api/availability
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
+token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWFlMTQzNzQ5NzI3MmI1OGQ5NTc5MiJ9LCJpYXQiOjE1ODMwMTQyMTEsImV4cCI6MTU4NjYxNDIxMX0.LGpegMzTwtYHcX3GpGitvSxQAbEIQ4Brsnd3VGYbFH0
 
 {
       "day_of_week1": "Monday",
