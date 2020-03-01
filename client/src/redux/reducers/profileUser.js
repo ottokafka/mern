@@ -8,7 +8,7 @@ import {
 } from "../types";
 
 const initialState = {
-  profileBusiness: null,
+  profile: null,
   profiles: [],
   repos: [],
   loading: true,
@@ -20,17 +20,10 @@ export default function(state = initialState, action) {
 
   switch (type) {
     case GET_PROFILE:
-      // case UPDATE_PROFILE:
-      return {
-        ...state,
-        profileBusiness: payload,
-        loading: false
-      };
-
     case UPDATE_PROFILE:
       return {
         ...state,
-        availability: payload,
+        profile: payload,
         loading: false
       };
     case GET_PROFILES:
@@ -44,12 +37,12 @@ export default function(state = initialState, action) {
         ...state,
         error: payload,
         loading: false,
-        profileBusiness: null
+        profile: null
       };
     case CLEAR_PROFILE:
       return {
         ...state,
-        profileBusiness: null,
+        profile: null,
         repos: [],
         loading: false
       };

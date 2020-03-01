@@ -239,8 +239,28 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3
 // How to access this business info from the client side
 
 
-//  Users 
+//  --------------Users -------------------- Users -------------------- Users
 GET http://localhost:5000/api/user/test
 Content-Type: application/json
 
+### 
+
+post http://localhost:5000/api/user
+Content-Type: application/json
+
+{
+    "name" : "sam",
+    "email": "samsam2@email.com",
+    "password": "123456"
+}
+### 
+
+
+post http://localhost:5000/api/user/loginUser
+Content-Type: application/json
+
+{
+    "email": "samsam2@email.com",
+    "password": "123456"
+}
 ### 

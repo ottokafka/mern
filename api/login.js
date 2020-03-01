@@ -105,9 +105,6 @@ router.post("/business", async (req, res) => {
 router.post("/businessLogin", async (req, res) => {
   const { email, password } = req.body;
 
-  console.log("Start");
-  console.log(email);
-
   try {
     // search db for email
     let business = await Business.findOne({ email });
@@ -171,7 +168,7 @@ const ClientSchema = new mongoose.Schema({
 Client = mongoose.model("client", ClientSchema);
 
 // @route    POST api/login/client
-// @desc     Login client
+// @desc     Register client
 // @access   Public
 router.post("/client", async (req, res) => {
   // need a model to refer to for the client and the business sign up

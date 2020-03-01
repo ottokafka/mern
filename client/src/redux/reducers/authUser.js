@@ -1,17 +1,63 @@
-import { SET_CURRENT_USER } from "../types";
+import {
+  REGISTER_SUCCESS,
+  //REGISTER_FAIL,
+  USER_LOADED,
+  //AUTH_ERROR,
+  LOGIN_SUCCESS,
+  //LOGIN_FAIL,
+  LOGOUT,
+  ACCOUNT_DELETED
+} from "../types";
 
 const initialState = {
-  isAuthenticated: false,
-  user: {}
+  token: localStorage.getItem("token"),
+  isAuthenticated: null,
+  loading: true,
+  business: null
 };
 
 export default function(state = initialState, action) {
-  switch (action.type) {
-    case SET_CURRENT_USER:
+  const { type, payload } = action;
+
+  switch (type) {
+    case USER_LOADED:
       return {
         ...state,
-        isAuthenticated: action.payload,
-        user: action.payload
+        isAuthenticated: true,
+        loading: false,
+        business: payload
+      };
+    case REGISTER_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: true,
+        loading: false,
+        business: payload
+      };
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        ...payload,
+        isAuthenticated: true,
+        loading: false,
+        business: payload
+      };
+    case ACCOUNT_DELETED:
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        business: null
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        token: null,
+        isAuthenticated: false,
+        loading: false,
+        business: null
       };
     default:
       return state;

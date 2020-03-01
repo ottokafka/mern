@@ -22,7 +22,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/user_dashboard" />;
+    return <Redirect to="/dashboard_user" />;
   }
 
   return (
@@ -67,7 +67,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
         </form>
 
         <p className="my-1">
-          Already have an account? <Link to="/user_register">Sign In</Link>
+          Already have an account? <Link to="/user_login">Sign In</Link>
         </p>
       </div>
     </Fragment>
@@ -75,14 +75,12 @@ const UserLogin = ({ login, isAuthenticated }) => {
 };
 
 UserLogin.propTypes = {
-  login: PropTypes.func.isRequired
-  //   auth: PropTypes.object.isRequired,
-  //   errors: PropTypes.object.isRequired
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth
-  //   errors: state.errors
+  isAuthenticated: state.authBusiness.isAuthenticated
 });
 
 export default connect(mapStateToProps, { login })(UserLogin);

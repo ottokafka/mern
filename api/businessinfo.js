@@ -119,7 +119,7 @@ router.post("/", token, async (req, res) => {
 // @route    GET api/businessinfo/all
 // @desc     gets all the businesses in the db
 // @access   Public
-router.get("/all", token, async (req, res) => {
+router.get("/all", async (req, res) => {
   try {
     const businesses = await BusinessInfo.find().populate("business", [
       "firstName",

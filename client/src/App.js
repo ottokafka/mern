@@ -23,6 +23,7 @@ import setAuthToken from "./redux/token";
 // User
 import UserLogin from "./user/UserLogin";
 import UserRegister from "./user/UserRegister";
+import DashboardUser from "./user/DashboardUser";
 
 // css
 import "./App.css";
@@ -52,8 +53,10 @@ const App = () => {
               component={RegisterBusiness}
             />
             <Route exact path="/login_business" component={LoginBusiness} />
-            <Route exact path="/user_login" component={UserLogin} />
-            <Route exact path="/user_register" component={UserRegister} />
+            <Route exact path="/login_user" component={UserLogin} />
+            <Route exact path="/register_user" component={UserRegister} />
+            <Route exact path="/dashboard_user" component={DashboardUser} />
+
             <Route
               exact
               path="/dashboard_business"

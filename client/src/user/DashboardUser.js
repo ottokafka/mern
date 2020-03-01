@@ -1,37 +1,31 @@
-import React from "react";
-import fade1 from "./img/fade1.jpeg";
-import fade2 from "./img/fade2.jpeg";
-import fade3 from "./img/fade3.jpeg";
-import fade4 from "./img/fade4.jpeg";
-import fade5 from "./img/fade5.jpeg";
-import fade6 from "./img/fade6.jpeg";
-import fade7 from "./img/fade7.jpeg";
-import fade8 from "./img/fade8.jpeg";
-import fade9 from "./img/fade9.jpeg";
-
+import React, { Fragment, useEffect } from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import fade1 from "../img/fade1.jpeg";
+import fade2 from "../img/fade2.jpeg";
+import fade3 from "../img/fade3.jpeg";
+import fade4 from "../img/fade4.jpeg";
+import fade5 from "../img/fade5.jpeg";
+import fade6 from "../img/fade6.jpeg";
+import fade7 from "../img/fade7.jpeg";
+import fade8 from "../img/fade8.jpeg";
+import fade9 from "../img/fade9.jpeg";
 
-const Landing = () => {
+import { getCurrentProfile, deleteAccount } from "../redux/actions/profileUser";
+
+const DashboardUser = ({
+  getCurrentProfile,
+  deleteAccount,
+  authUser: { user },
+  profileUser: { profileUser, loading }
+}) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
+
   return (
-    <div>
-      <section className="jumbotron text-center">
-        <div className="container">
-          <h1 className="jumbotron-heading">My Startup</h1>
-          <p className="lead text-muted">
-            Create you business or find a business. Want to setup your
-            barbershop online? Now you can. Want to find a barber in your area.
-          </p>
-          <p>
-            <Link to="/login_user" className="btn btn-primary my-2">
-              Login
-            </Link>{" "}
-            <Link to="/register_user" className="btn btn-secondary my-2">
-              Sign up
-            </Link>
-          </p>
-        </div>
-      </section>
-
+    <Fragment>
       <div className="album py-5 bg-light">
         <div className="container">
           <div className="row">
@@ -310,8 +304,21 @@ const Landing = () => {
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
 };
+DashboardUser.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
+  authUser: PropTypes.object.isRequired,
+  profileUser: PropTypes.object.isRequired
+};
 
-export default Landing;
+const mapStateToProps = state => ({
+  authUser: state.authUser,
+  profileUser: state.profileUser
+});
+
+export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
+  DashboardUser
+);

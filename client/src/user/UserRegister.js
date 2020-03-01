@@ -29,7 +29,7 @@ const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
   };
 
   if (isAuthenticated) {
-    return <Redirect to="/user_dashboard" />;
+    return <Redirect to="/dashboard_user" />;
   }
 
   return (
@@ -90,7 +90,7 @@ const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
         </form>
 
         <p className="my-1">
-          Already have an account? <Link to="/login_business">Sign In</Link>
+          Already have an account? <Link to="/login_user">Sign In</Link>
         </p>
       </div>
     </Fragment>
@@ -98,14 +98,13 @@ const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
 };
 
 UserRegister.propTypes = {
-  registerUser: PropTypes.func.isRequired
-  //   auth: PropTypes.object.isRequired
-  //   errors: PropTypes.object.isRequired
+  setAlert: PropTypes.func.isRequired,
+  registerUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  auth: state.auth,
-  errors: state.errors
+  isAuthenticated: state.authUser.isAuthenticated
 });
 
 export default connect(mapStateToProps, { setAlert, registerUser })(

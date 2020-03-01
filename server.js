@@ -1,6 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const passport = require("passport");
 
 // Node module that allows to work with file and dir path
 const path = require("path");
@@ -27,12 +26,6 @@ const connectDB = async () => {
 
 connectDB();
 
-// Passport middleware
-app.use(passport.initialize());
-
-// Passport Config
-require("./config/passport")(passport);
-
 // getting json from user
 app.use(express.json({ extended: false }));
 
@@ -43,7 +36,8 @@ app.use("/api/businessinfo", require("./api/businessinfo"));
 app.use("/api/services", require("./api/services"));
 
 // user client api routes
-app.use("/api/user", require("./api/user"));
+app.use("/api/user", require("./api/user/user"));
+app.use("/api/profile", require("./api/user/profile"));
 
 // Serve static assets in production
 if (process.env.NODE_ENV === "production") {
