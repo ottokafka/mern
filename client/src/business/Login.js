@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { login } from "../redux/actions/authBusiness";
 import fade1 from "../img/fade1.jpeg";
 
-const Login = ({ login, isAuthenticated }) => {
+const Login = ({ login, isAuthenticatedBusiness }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -21,8 +21,8 @@ const Login = ({ login, isAuthenticated }) => {
     login({ email, password });
   };
 
-  if (isAuthenticated && localStorage.token) {
-    // return <Redirect to="/dashboard_business" />;
+  if (isAuthenticatedBusiness && localStorage.token) {
+    return <Redirect to="/dashboard_business" />;
   }
 
   return (
@@ -30,7 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
       <div className="text-center">
         <form className="form-signin" onSubmit={e => onSubmit(e)}>
           <img className="mb-4" src={fade1} alt="" width="72" height="72" />
-          <h1 className="h3 mb-3 font-weight-normal">Create a Business</h1>
+          <h1 className="h3 mb-3 font-weight-normal">Login Business</h1>
 
           <input
             className="form-control"
@@ -65,7 +65,8 @@ const Login = ({ login, isAuthenticated }) => {
         </form>
 
         <p className="my-1">
-          Already have an account? <Link to="/login_business">Sign In</Link>
+          Don't have an account?{" "}
+          <Link to="/register_business">Sign Up now</Link>
         </p>
       </div>
     </Fragment>
@@ -74,11 +75,11 @@ const Login = ({ login, isAuthenticated }) => {
 
 Login.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticatedBusiness: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.authBusiness.isAuthenticated
+  isAuthenticatedBusiness: state.authBusiness.isAuthenticatedBusiness
 });
 
 export default connect(mapStateToProps, { login })(Login);

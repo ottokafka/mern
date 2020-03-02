@@ -115,7 +115,7 @@ export const login = (email, password) => async dispatch => {
 };
 
 // Logout / Clear Profile
-export const logout = () => dispatch => {
+export const logoutBusiness = () => dispatch => {
   dispatch({ type: CLEAR_PROFILE });
   dispatch({ type: LOGOUT });
 };

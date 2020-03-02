@@ -28,11 +28,6 @@ import DashboardUser from "./user/DashboardUser";
 // css
 import "./App.css";
 
-// if browser local storage has token load it
-// if (localStorage.token) {
-//   setAuthToken(localStorage.token);
-// }
-
 const App = () => {
   //  redux action in authBusiness if token login axios request for business
   useEffect(() => {
@@ -55,20 +50,32 @@ const App = () => {
             <Route exact path="/login_business" component={LoginBusiness} />
             <Route exact path="/login_user" component={UserLogin} />
             <Route exact path="/register_user" component={UserRegister} />
-            <Route exact path="/dashboard_user" component={DashboardUser} />
+            <PrivateRouteBusiness
+              exact
+              path="/dashboard_user"
+              component={DashboardUser}
+            />
 
-            <Route
+            <PrivateRouteBusiness
               exact
               path="/dashboard_business"
               component={DashboardBusiness}
             />
-            <Route
+            <PrivateRouteBusiness
               exact
               path="/create_profile_business"
               component={CreateProfileBusiness}
             />
-            <Route exact path="/add_availability" component={AddAvailability} />
-            <Route exact path="/add_services" component={AddServices} />
+            <PrivateRouteBusiness
+              exact
+              path="/add_availability"
+              component={AddAvailability}
+            />
+            <PrivateRouteBusiness
+              exact
+              path="/add_services"
+              component={AddServices}
+            />
           </Switch>
         </Router>
       </Fragment>

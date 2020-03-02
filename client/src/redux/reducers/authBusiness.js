@@ -11,7 +11,7 @@ import {
 
 const initialState = {
   token: localStorage.getItem("token"),
-  isAuthenticated: null,
+  isAuthenticatedBusiness: null,
   loading: true,
   business: null
 };
@@ -23,7 +23,7 @@ export default function(state = initialState, action) {
     case USER_LOADED:
       return {
         ...state,
-        isAuthenticated: true,
+        isAuthenticatedBusiness: true,
         loading: false,
         business: payload
       };
@@ -31,7 +31,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         ...payload,
-        isAuthenticated: true,
+        isAuthenticatedBusiness: true,
         loading: false,
         business: payload
       };
@@ -39,7 +39,7 @@ export default function(state = initialState, action) {
       return {
         ...state,
         ...payload,
-        isAuthenticated: true,
+        isAuthenticatedBusiness: true,
         loading: false,
         business: payload
       };
@@ -47,15 +47,15 @@ export default function(state = initialState, action) {
       return {
         ...state,
         token: null,
-        isAuthenticated: false,
+        isAuthenticatedBusiness: false,
         loading: false,
         business: null
       };
     case LOGOUT:
       return {
         ...state,
-        token: null,
-        isAuthenticated: false,
+        token: localStorage.removeItem("token"),
+        isAuthenticatedBusiness: false,
         loading: false,
         business: null
       };
