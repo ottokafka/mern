@@ -6,7 +6,7 @@ import { registerUser } from "../redux/actions/authActions";
 import PropTypes from "prop-types";
 import fade1 from "../img/fade1.jpeg";
 
-const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
+const UserRegister = ({ setAlert, registerUser, isAuthenticatedUser }) => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -28,7 +28,7 @@ const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
     }
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticatedUser) {
     return <Redirect to="/dashboard_user" />;
   }
 
@@ -100,11 +100,11 @@ const UserRegister = ({ setAlert, registerUser, isAuthenticated }) => {
 UserRegister.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registerUser: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticatedUser: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.authUser.isAuthenticated
+  isAuthenticatedUser: state.authUser.isAuthenticatedUser
 });
 
 export default connect(mapStateToProps, { setAlert, registerUser })(

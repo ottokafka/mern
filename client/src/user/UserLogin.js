@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 import { login } from "../redux/actions/authActions";
 import fade1 from "../img/fade1.jpeg";
 
-const UserLogin = ({ login, isAuthenticated }) => {
+const UserLogin = ({ login, isAuthenticatedUser }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: ""
@@ -21,7 +21,7 @@ const UserLogin = ({ login, isAuthenticated }) => {
     login({ email, password });
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticatedUser) {
     return <Redirect to="/dashboard_user" />;
   }
 
@@ -76,11 +76,11 @@ const UserLogin = ({ login, isAuthenticated }) => {
 
 UserLogin.propTypes = {
   login: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticatedUser: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.authBusiness.isAuthenticated
+  isAuthenticatedUser: state.authUser.isAuthenticatedUser
 });
 
 export default connect(mapStateToProps, { login })(UserLogin);

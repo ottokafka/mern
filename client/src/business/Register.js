@@ -6,7 +6,7 @@ import { register } from "../redux/actions/authBusiness";
 import PropTypes from "prop-types";
 import fade1 from "../img/fade1.jpeg";
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const Register = ({ setAlert, register, isAuthenticatedBusiness }) => {
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -37,7 +37,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
   };
 
-  if (isAuthenticated) {
+  if (isAuthenticatedBusiness) {
     return <Redirect to="/dashboard_business" />;
   }
 
@@ -122,11 +122,11 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 Register.propTypes = {
   setAlert: PropTypes.func.isRequired,
   register: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticatedBusiness: PropTypes.bool
 };
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.authBusiness.isAuthenticated
+  isAuthenticatedBusiness: state.authBusiness.isAuthenticatedBusiness
 });
 
 export default connect(mapStateToProps, { setAlert, register })(Register);

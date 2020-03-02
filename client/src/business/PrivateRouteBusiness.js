@@ -5,13 +5,13 @@ import { connect } from "react-redux";
 
 const PrivateRouteBusiness = ({
   component: Component,
-  authBusiness: { isAuthenticated },
+  authBusiness: { isAuthenticatedBusiness },
   ...rest
 }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticated ? (
+      isAuthenticatedBusiness ? (
         <Component {...props} />
       ) : (
         <Redirect to="/login_business" />
