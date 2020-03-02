@@ -18,7 +18,7 @@ should start the express server and React js at the same time.
 
 todo
 
-1. service page = Create / add services page
-2. add services to the businessInfo model.
-
-3. Get the client intergrated
+1. refactor code - clean it up
+1. add google map api
+1. add square payment sdk
+1. merge mern stack to barber app

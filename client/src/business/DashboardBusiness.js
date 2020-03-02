@@ -10,7 +10,6 @@ import {
   getCurrentProfile,
   deleteAccount
 } from "../redux/actions/profileBusiness";
-import { login } from "../redux/actions/authBusiness";
 
 const DashboardBusiness = ({
   getCurrentProfile,

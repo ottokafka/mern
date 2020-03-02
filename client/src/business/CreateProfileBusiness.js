@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Link, withRouter, Redirect } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -21,7 +21,6 @@ const CreateProfileBusiness = ({
     company: "",
     twitter: "",
     tiktok: "",
-    twitter: "",
     facebook: "",
     linkedin: "",
     youtube: "",

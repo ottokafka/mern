@@ -18,7 +18,6 @@ import PrivateRouteBusiness from "./business/PrivateRouteBusiness";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { loadBusiness } from "./redux/actions/authBusiness";
-import setAuthToken from "./redux/token";
 
 // User
 import UserLogin from "./user/UserLogin";

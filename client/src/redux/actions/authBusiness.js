@@ -10,13 +10,9 @@ import {
   LOGOUT,
   CLEAR_PROFILE
 } from "../types";
-import setAuthToken from "../token";
 
 // Load User
 export const loadBusiness = () => async dispatch => {
-  // if (localStorage.token) {
-  //   setAuthToken(localStorage.token);
-  // }
   let token = localStorage.token;
   const config = {
     headers: {
