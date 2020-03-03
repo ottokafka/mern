@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
-import PropTypes from "prop-types";
+import { Link, withRouter, Redirect } from "react-router-dom";
+// import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addAvailability } from "../redux/actions/profileBusiness";
 
@@ -102,6 +102,12 @@ const AddAvailability = ({ addAvailability, history }) => {
     // start_lunch7,
     // end_lunch7
   } = formData;
+
+  // check if token is not in localStorage or undefined go to login page
+  let token = localStorage.token;
+  if (!token || token === "undefined") {
+    return <Redirect to="login_business" />;
+  }
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -554,8 +560,8 @@ const AddAvailability = ({ addAvailability, history }) => {
   );
 };
 
-AddAvailability.propTypes = {
-  addAvailability: PropTypes.func.isRequired
-};
+// AddAvailability.propTypes = {
+// addAvailability: PropTypes.func.isRequired
+// };
 
 export default connect(null, { addAvailability })(withRouter(AddAvailability));

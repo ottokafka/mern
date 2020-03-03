@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
@@ -17,6 +17,11 @@ const DashboardBusiness = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
+
+  let token = localStorage.token;
+  if (!token || token === "undefined") {
+    return <Redirect to="login_business" />;
+  }
 
   if (profileBusiness === null) {
     return (
@@ -244,7 +249,7 @@ const DashboardBusiness = ({
             {/* single card below */}
             <div className="card mb-4 shadow-sm">
               <div className="card-header">
-                <h4 className="my-0 font-weight-normal">Your Services final</h4>
+                <h4 className="my-0 font-weight-normal">Your Services</h4>
               </div>
               <div className="card-body">
                 <h1 className="card-title pricing-card-title">
@@ -255,7 +260,7 @@ const DashboardBusiness = ({
                   <li>fade: ${profileBusiness.services.fade}</li>
                 </ul>
                 <Link
-                  to="add_availability"
+                  to="add_services"
                   className="btn btn-lg btn-block btn-outline-primary"
                 >
                   Add Services

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -56,7 +56,7 @@ const CreateProfileBusiness = ({
   }, [getCurrentProfile]);
 
   return (
-    <Fragment className="container">
+    <Fragment>
       <div className="container text-center">
         <form className="form-signin" onSubmit={e => onSubmit(e)}>
           <img className="mb-4" src={""} alt="" width="72" height="72" />

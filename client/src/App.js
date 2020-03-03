@@ -12,7 +12,6 @@ import DashboardBusiness from "./business/DashboardBusiness";
 import CreateProfileBusiness from "./business/CreateProfileBusiness";
 import AddAvailability from "./business/AddAvailability";
 import AddServices from "./business/AddServices";
-import PrivateRouteBusiness from "./business/PrivateRouteBusiness";
 
 //Redux
 import { Provider } from "react-redux";

@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, withRouter, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addServices } from "../redux/actions/profileBusiness";
@@ -89,6 +89,12 @@ const AddServices = ({ addServices, history }) => {
     // sewInMaintenance
   } = formData;
 
+  // check if token is not in localStorage or undefined go to login page
+  let token = localStorage.token;
+  if (!token || token === "undefined") {
+    return <Redirect to="login_business" />;
+  }
+
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -136,7 +142,7 @@ const AddServices = ({ addServices, history }) => {
 };
 
 AddServices.propTypes = {
-  addAvailability: PropTypes.func.isRequired
+  addServices: PropTypes.func.isRequired
 };
 
 export default connect(null, { addServices })(withRouter(AddServices));

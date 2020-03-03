@@ -122,11 +122,11 @@ const Navbar = ({
     </nav>
   );
 
-  if (isAuthenticatedUser === null && isAuthenticatedBusiness === null) {
+  if (isAuthenticatedUser === false || isAuthenticatedBusiness === false) {
     return <Fragment>{guestLinks}</Fragment>;
-  } else if (isAuthenticatedBusiness !== null) {
+  } else if (isAuthenticatedBusiness === true) {
     return <Fragment>{authLinksBusiness}</Fragment>;
-  } else if (isAuthenticatedUser !== null) {
+  } else if (isAuthenticatedUser === true) {
     return <Fragment>{authLinksUser}</Fragment>;
   }
 };

@@ -45,7 +45,7 @@ export const getCurrentProfile = () => async dispatch => {
     }
     // check if services is there
     if (res.data.services) {
-      console.log("availability is ready");
+      console.log("service is ready");
       dispatch({
         type: SERVICES
       });
