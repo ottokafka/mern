@@ -12,7 +12,6 @@ import {
 const initialState = {
   token: localStorage.getItem("token"),
   isAuthenticatedUser: null,
-  loading: true,
   business: null
 };
 
@@ -24,7 +23,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isAuthenticatedUser: true,
-        loading: false,
         business: payload
       };
     case REGISTER_SUCCESS:
@@ -32,7 +30,6 @@ export default function(state = initialState, action) {
         ...state,
         ...payload,
         isAuthenticatedUser: true,
-        loading: false,
         business: payload
       };
     case LOGIN_SUCCESS:
@@ -40,7 +37,6 @@ export default function(state = initialState, action) {
         ...state,
         ...payload,
         isAuthenticatedUser: true,
-        loading: false,
         business: payload
       };
     case ACCOUNT_DELETED:
@@ -48,7 +44,6 @@ export default function(state = initialState, action) {
         ...state,
         token: null,
         isAuthenticatedUser: false,
-        loading: false,
         business: null
       };
     case LOGOUT:
@@ -56,7 +51,6 @@ export default function(state = initialState, action) {
         ...state,
         token: localStorage.removeItem("token"),
         isAuthenticatedUser: false,
-        loading: false,
         business: null
       };
     default:

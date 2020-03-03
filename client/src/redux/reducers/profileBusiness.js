@@ -1,17 +1,17 @@
 import {
-  GET_PROFILE,
-  PROFILE_ERROR,
-  CLEAR_PROFILE,
-  UPDATE_PROFILE,
-  GET_PROFILES,
-  GET_REPOS
+  GET_PROFILE_BUSINESS,
+  PROFILE_ERROR_BUSINESS,
+  CLEAR_PROFILE_BUSINESS,
+  UPDATE_PROFILE_BUSINESS,
+  AVAILABILITY,
+  SERVICES
 } from "../types";
 
 const initialState = {
   profileBusiness: null,
+  availability: null,
+  services: null,
   profiles: [],
-  repos: [],
-  loading: true,
   error: {}
 };
 
@@ -19,46 +19,43 @@ export default function(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
-    case GET_PROFILE:
-      // case UPDATE_PROFILE:
+    case GET_PROFILE_BUSINESS:
+      // case UPDATE_PROFILE_BUSINESS:
       return {
         ...state,
-        profileBusiness: payload,
-        loading: false
+        profileBusiness: payload
       };
 
-    case UPDATE_PROFILE:
+    case AVAILABILITY:
       return {
         ...state,
-        availability: payload,
-        loading: false
+        availability: true
       };
-    case GET_PROFILES:
+
+    case SERVICES:
       return {
         ...state,
-        profiles: payload,
-        loading: false
+        services: true
       };
-    case PROFILE_ERROR:
+
+    case UPDATE_PROFILE_BUSINESS:
+      return {
+        ...state,
+        profileBusiness: payload
+      };
+
+    case PROFILE_ERROR_BUSINESS:
       return {
         ...state,
         error: payload,
-        loading: false,
         profileBusiness: null
       };
-    case CLEAR_PROFILE:
+    case CLEAR_PROFILE_BUSINESS:
       return {
         ...state,
-        profileBusiness: null,
-        repos: [],
-        loading: false
+        profileBusiness: null
       };
-    case GET_REPOS:
-      return {
-        ...state,
-        repos: payload,
-        loading: false
-      };
+
     default:
       return state;
   }

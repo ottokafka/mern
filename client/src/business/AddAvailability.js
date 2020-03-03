@@ -136,7 +136,6 @@ const AddAvailability = ({ addAvailability, history }) => {
                     onClick={() => toggleMonday(!mondayInputs)}
                     onChange={() => {
                       setFormData({ ...formData, work1: !work1 });
-                      // toggleDisabled(!toDateDisabled);
                     }}
                   />
                   <span className="switch-left">

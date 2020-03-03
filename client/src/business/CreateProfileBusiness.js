@@ -10,7 +10,7 @@ import {
 const CreateProfileBusiness = ({
   createProfile,
   getCurrentProfile,
-  profileBusiness: { profileBusiness, loading },
+  profileBusiness: { profileBusiness },
   history
 }) => {
   const [formData, setFormData] = useState({
@@ -18,7 +18,6 @@ const CreateProfileBusiness = ({
     city: "",
     state: "",
     zip: "",
-    company: "",
     twitter: "",
     tiktok: "",
     facebook: "",
@@ -35,7 +34,6 @@ const CreateProfileBusiness = ({
     city,
     state,
     zip,
-    company,
     tiktok,
     twitter,
     facebook,
@@ -57,10 +55,7 @@ const CreateProfileBusiness = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  return loading && profileBusiness === null ? (
-    // <Redirect to="/dashboard_business" />
-    <p></p>
-  ) : (
+  return (
     <Fragment className="container">
       <div className="container text-center">
         <form className="form-signin" onSubmit={e => onSubmit(e)}>
@@ -98,14 +93,6 @@ const CreateProfileBusiness = ({
             placeholder="zipcode"
             name="zip"
             value={zip}
-            onChange={e => onChange(e)}
-          />
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Company name"
-            name="company"
-            value={company}
             onChange={e => onChange(e)}
           />
 
@@ -184,10 +171,6 @@ const CreateProfileBusiness = ({
             value="submit"
           />
         </form>
-
-        <p className="mt-1">
-          Already have an account? <Link to="/login_business">Sign In</Link>
-        </p>
       </div>
     </Fragment>
   );

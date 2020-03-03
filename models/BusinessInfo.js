@@ -6,10 +6,7 @@ const BusinessInfoSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "business"
   },
-  company: {
-    type: String,
-    required: true
-  },
+
   location: {
     address: {
       type: String,

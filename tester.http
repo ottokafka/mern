@@ -26,16 +26,7 @@ Content-Type: application/json
 }
 ###
 
-// client registration 
-POST http://localhost:5000/api/login/client
-Content-Type: application/json
 
-{
-    "name" : "Otto1",
-    "email": "Kafka5@email.com",
-    "password": "1234567890"
-}
-###
 
 // Business registration 1
 POST http://localhost:5000/api/login/business
@@ -44,7 +35,7 @@ Content-Type: application/json
 {
     "firstName" : "John",
     "lastName": "Mick",
-    "email": "dude22@email.com",
+    "email": "business3@email.com",
     "password": "123456",
     "phoneNumber": "123456789"
 }
@@ -74,15 +65,6 @@ Content-Type: application/json
 ###
 
 
-// client login 
-POST http://localhost:5000/api/login/clientLogin
-Content-Type: application/json
-
-{
-    "email" : "Kafka5@email.com",
-    "password": "1234567890"
-}
-###
 
 // test GET api
 GET http://localhost:5000/api/availability/test
@@ -209,7 +191,6 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIy
 //  Bussiness info all
 GET http://localhost:5000/api/businessinfo/all
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
 
 ### 
 
@@ -236,8 +217,6 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3
 
 ### 
 //todo
-// How to access this business info from the client side
-
 
 //  --------------Users -------------------- Users -------------------- Users
 GET http://localhost:5000/api/user/test
@@ -250,7 +229,7 @@ Content-Type: application/json
 
 {
     "name" : "sam",
-    "email": "samsam2@email.com",
+    "email": "samsam3@email.com",
     "password": "123456"
 }
 ### 

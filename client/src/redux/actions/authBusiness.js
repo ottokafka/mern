@@ -1,14 +1,14 @@
 import axios from "axios";
 import { setAlert } from "./alert";
 import {
-  REGISTER_SUCCESS,
-  REGISTER_FAIL,
-  USER_LOADED,
-  AUTH_ERROR,
-  LOGIN_SUCCESS,
-  LOGIN_FAIL,
-  LOGOUT,
-  CLEAR_PROFILE
+  REGISTER_BUSINESS_SUCCESS,
+  REGISTER_BUSINESS_FAIL,
+  BUSINESS_LOADED,
+  AUTH_ERROR_BUSINESS,
+  LOGIN_BUSINESS_SUCCESS,
+  LOGIN_BUSINESS_FAIL,
+  LOGOUT_BUSINESS,
+  CLEAR_PROFILE_BUSINESS
 } from "../types";
 
 // Load User
@@ -26,12 +26,12 @@ export const loadBusiness = () => async dispatch => {
     console.log(res);
 
     dispatch({
-      type: USER_LOADED,
+      type: BUSINESS_LOADED,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: AUTH_ERROR
+      type: AUTH_ERROR_BUSINESS
     });
   }
 };
@@ -54,7 +54,7 @@ export const register = (name, email, password) => async dispatch => {
     localStorage.setItem("token", res.data.token);
 
     dispatch({
-      type: REGISTER_SUCCESS,
+      type: REGISTER_BUSINESS_SUCCESS,
       payload: res.data
     });
 
@@ -67,7 +67,7 @@ export const register = (name, email, password) => async dispatch => {
     }
 
     dispatch({
-      type: REGISTER_FAIL
+      type: REGISTER_BUSINESS_FAIL
     });
   }
 };
@@ -92,7 +92,7 @@ export const login = (email, password) => async dispatch => {
     localStorage.setItem("token", res.data.token);
 
     dispatch({
-      type: LOGIN_SUCCESS,
+      type: LOGIN_BUSINESS_SUCCESS,
       payload: res.data
     });
 
@@ -107,13 +107,13 @@ export const login = (email, password) => async dispatch => {
     // }
 
     dispatch({
-      type: LOGIN_FAIL
+      type: LOGIN_BUSINESS_FAIL
     });
   }
 };
 
 // Logout / Clear Profile
 export const logoutBusiness = () => dispatch => {
-  dispatch({ type: CLEAR_PROFILE });
-  dispatch({ type: LOGOUT });
+  dispatch({ type: CLEAR_PROFILE_BUSINESS });
+  dispatch({ type: LOGOUT_BUSINESS });
 };

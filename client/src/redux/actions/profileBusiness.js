@@ -2,13 +2,13 @@ import axios from "axios";
 import { setAlert } from "./alert";
 
 import {
-  GET_PROFILE,
-  GET_PROFILES,
-  PROFILE_ERROR,
-  UPDATE_PROFILE,
-  CLEAR_PROFILE,
-  ACCOUNT_DELETED,
-  GET_REPOS
+  GET_PROFILE_BUSINESS,
+  PROFILE_ERROR_BUSINESS,
+  UPDATE_PROFILE_BUSINESS,
+  CLEAR_PROFILE_BUSINESS,
+  ACCOUNT_DELETED_BUSINESS,
+  AVAILABILITY,
+  SERVICES
 } from "../types";
 
 // Get current users profile
@@ -27,36 +27,36 @@ export const getCurrentProfile = () => async dispatch => {
     // console.log("This is causing the app to have an error");
     // const res2 = await axios.get("/api/availability/me", config);
 
+    console.log(res.data);
+
+    console.log(res.data.availability);
+
     dispatch({
-      type: GET_PROFILE,
+      type: GET_PROFILE_BUSINESS,
       payload: res.data
     });
+
+    // check if availability is there
+    if (res.data.availability) {
+      console.log("availability is ready");
+      dispatch({
+        type: AVAILABILITY
+      });
+    }
+    // check if services is there
+    if (res.data.services) {
+      console.log("availability is ready");
+      dispatch({
+        type: SERVICES
+      });
+    }
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: err
     });
   }
   //   payload: { msg: err.response.statusText, status: err.response.status }
-};
-
-// Get all profiles
-export const getProfiles = () => async dispatch => {
-  dispatch({ type: CLEAR_PROFILE });
-
-  try {
-    const res = await axios.get("/api/profile");
-
-    dispatch({
-      type: GET_PROFILES,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
-      payload: err
-    });
-  }
 };
 
 // Get profile by ID
@@ -65,29 +65,12 @@ export const getProfileById = userId => async dispatch => {
     const res = await axios.get(`/api/profile/user/${userId}`);
 
     dispatch({
-      type: GET_PROFILE,
+      type: GET_PROFILE_BUSINESS,
       payload: res.data
     });
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status }
-    });
-  }
-};
-
-// Get Github repos
-export const getGithubRepos = username => async dispatch => {
-  try {
-    const res = await axios.get(`/api/profile/github/${username}`);
-
-    dispatch({
-      type: GET_REPOS,
-      payload: res.data
-    });
-  } catch (err) {
-    dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
@@ -111,7 +94,7 @@ export const createProfile = (
     const res = await axios.post("/api/businessinfo", formData, config);
 
     dispatch({
-      type: GET_PROFILE,
+      type: GET_PROFILE_BUSINESS,
       payload: res.data
     });
 
@@ -130,7 +113,7 @@ export const createProfile = (
     // }
 
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: err
     });
   }
@@ -151,8 +134,12 @@ export const addAvailability = (formData, history) => async dispatch => {
     console.log(res.data);
 
     dispatch({
-      type: UPDATE_PROFILE,
+      type: UPDATE_PROFILE_BUSINESS,
       payload: res.data
+    });
+
+    dispatch({
+      type: AVAILABILITY
     });
 
     dispatch(setAlert("Availability Added", "success"));
@@ -167,7 +154,7 @@ export const addAvailability = (formData, history) => async dispatch => {
     // }
 
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: err
     });
   }
@@ -188,8 +175,12 @@ export const addServices = (formData, history) => async dispatch => {
     console.log(res.data);
 
     dispatch({
-      type: UPDATE_PROFILE,
+      type: UPDATE_PROFILE_BUSINESS,
       payload: res.data
+    });
+
+    dispatch({
+      type: SERVICES
     });
 
     dispatch(setAlert("Services Added", "success"));
@@ -204,7 +195,7 @@ export const addServices = (formData, history) => async dispatch => {
     // }
 
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: err
     });
   }
@@ -222,7 +213,7 @@ export const addEducation = (formData, history) => async dispatch => {
     const res = await axios.put("/api/profile/education", formData, config);
 
     dispatch({
-      type: UPDATE_PROFILE,
+      type: UPDATE_PROFILE_BUSINESS,
       payload: res.data
     });
 
@@ -237,7 +228,7 @@ export const addEducation = (formData, history) => async dispatch => {
     }
 
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
@@ -249,14 +240,14 @@ export const deleteExperience = id => async dispatch => {
     const res = await axios.delete(`/api/profile/experience/${id}`);
 
     dispatch({
-      type: UPDATE_PROFILE,
+      type: UPDATE_PROFILE_BUSINESS,
       payload: res.data
     });
 
     dispatch(setAlert("Experience Removed", "success"));
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
@@ -268,14 +259,14 @@ export const deleteEducation = id => async dispatch => {
     const res = await axios.delete(`/api/profile/education/${id}`);
 
     dispatch({
-      type: UPDATE_PROFILE,
+      type: UPDATE_PROFILE_BUSINESS,
       payload: res.data
     });
 
     dispatch(setAlert("Education Removed", "success"));
   } catch (err) {
     dispatch({
-      type: PROFILE_ERROR,
+      type: PROFILE_ERROR_BUSINESS,
       payload: { msg: err.response.statusText, status: err.response.status }
     });
   }
@@ -287,13 +278,13 @@ export const deleteAccount = () => async dispatch => {
     try {
       await axios.delete("/api/profile");
 
-      dispatch({ type: CLEAR_PROFILE });
-      dispatch({ type: ACCOUNT_DELETED });
+      dispatch({ type: CLEAR_PROFILE_BUSINESS });
+      dispatch({ type: ACCOUNT_DELETED_BUSINESS });
 
       dispatch(setAlert("Your account has been permanantly deleted"));
     } catch (err) {
       dispatch({
-        type: PROFILE_ERROR,
+        type: PROFILE_ERROR_BUSINESS,
         payload: { msg: err.response.statusText, status: err.response.status }
       });
     }

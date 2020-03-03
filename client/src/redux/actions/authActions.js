@@ -56,11 +56,13 @@ export const registerUser = ({ name, email, password }) => async dispatch => {
       payload: res.data
     });
   } catch (err) {
-    const errors = err.response.data.errors;
+    console.log(err);
 
-    if (errors) {
-      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
-    }
+    // const errors = err.response.data.errors;
+
+    // if (errors) {
+    //   errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    // }
 
     dispatch({
       type: REGISTER_FAIL

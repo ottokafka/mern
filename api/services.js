@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 // const Services = require("../models/Services");
 const BusinessInfo = require("../models/BusinessInfo");
-const token = require("../token");
+const token = require("../tokenBusiness");
 
 // test route
 // GET api/services/test

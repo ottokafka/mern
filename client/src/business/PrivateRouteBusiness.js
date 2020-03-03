@@ -1,17 +1,17 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
 const PrivateRouteBusiness = ({
   component: Component,
-  authBusiness: { isAuthenticatedBusiness },
+  authBusiness: { isAuthenticatedBusiness, token },
   ...rest
 }) => (
   <Route
     {...rest}
     render={props =>
-      isAuthenticatedBusiness ? (
+      token === undefined ? (
         <Component {...props} />
       ) : (
         <Redirect to="/login_business" />

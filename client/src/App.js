@@ -6,8 +6,8 @@ import Navbar from "./Navbar";
 import Alert from "./Alert";
 
 //Business
-import RegisterBusiness from "./business/Register";
-import LoginBusiness from "./business/Login";
+import RegisterBusiness from "./business/RegisterBusiness";
+import LoginBusiness from "./business/LoginBusiness";
 import DashboardBusiness from "./business/DashboardBusiness";
 import CreateProfileBusiness from "./business/CreateProfileBusiness";
 import AddAvailability from "./business/AddAvailability";
@@ -49,32 +49,20 @@ const App = () => {
             <Route exact path="/login_business" component={LoginBusiness} />
             <Route exact path="/login_user" component={UserLogin} />
             <Route exact path="/register_user" component={UserRegister} />
-            <PrivateRouteBusiness
-              exact
-              path="/dashboard_user"
-              component={DashboardUser}
-            />
+            <Route exact path="/dashboard_user" component={DashboardUser} />
 
-            <PrivateRouteBusiness
+            <Route
               exact
               path="/dashboard_business"
               component={DashboardBusiness}
             />
-            <PrivateRouteBusiness
+            <Route
               exact
               path="/create_profile_business"
               component={CreateProfileBusiness}
             />
-            <PrivateRouteBusiness
-              exact
-              path="/add_availability"
-              component={AddAvailability}
-            />
-            <PrivateRouteBusiness
-              exact
-              path="/add_services"
-              component={AddServices}
-            />
+            <Route exact path="/add_availability" component={AddAvailability} />
+            <Route exact path="/add_services" component={AddServices} />
           </Switch>
         </Router>
       </Fragment>

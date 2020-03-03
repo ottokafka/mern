@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-// import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import fade1 from "../img/fade1.jpeg";
@@ -10,11 +10,15 @@ const DashboardUser = ({
   getCurrentProfile,
   deleteAccount,
   authUser: { user },
-  profileUser: { profileUser, loading }
+  profileUser: { profileUser }
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
+
+  if (localStorage.token === "undefined") {
+    return <Redirect to="/login_user" />;
+  }
 
   return (
     <Fragment>

@@ -2,8 +2,7 @@ const express = require("express");
 const router = express.Router();
 const BusinessInfo = require("../models/BusinessInfo");
 const Business = require("../models/Business");
-const Availability = require("../models/Availability");
-const token = require("../token");
+const token = require("../tokenBusiness");
 
 // test route
 // GET api/businessinfo
@@ -51,28 +50,6 @@ router.post("/", token, async (req, res) => {
     snapchat,
     tiktok
   } = req.body;
-
-  // // Build business info object
-  // const businessInfoFields = {};
-  // businessInfoFields.business = req.business.id;
-  // if (company) businessInfoFields.company = company;
-
-  // // Build business location object
-  // businessInfoFields.location = {};
-  // if (address) businessInfoFields.location.address = address;
-  // if (city) businessInfoFields.location.city = city;
-  // if (state) businessInfoFields.location.state = state;
-  // if (zip) businessInfoFields.location.zip = zip;
-
-  // // Build social object
-  // businessInfoFields.social = {};
-  // if (youtube) businessInfoFields.social.youtube = youtube;
-  // if (twitter) businessInfoFields.social.twitter = twitter;
-  // if (facebook) businessInfoFields.social.facebook = facebook;
-  // if (linkedin) businessInfoFields.social.linkedin = linkedin;
-  // if (instagram) businessInfoFields.social.instagram = instagram;
-  // if (snapchat) businessInfoFields.social.snapchat = snapchat;
-  // if (tiktok) businessInfoFields.social.tiktok = tiktok;
 
   const businessInfoFields = {
     business: req.business.id,
@@ -128,7 +105,7 @@ router.get("/all", async (req, res) => {
     ]);
     console.log(businesses);
 
-    const availability = await Availability.find();
+    const availability = await BusinessInfo.find();
     console.log(availability);
 
     res.json({ AllBusiness: businesses, AllAvailabiltiy: availability });
@@ -161,7 +138,7 @@ router.delete("/", token, async (req, res) => {
     // Remove user posts
     await BusinessInfo.deleteMany({ business: req.business.id });
     // Remove profile
-    await Availability.findOneAndRemove({ business: req.business.id });
+    await BusinessInfo.findOneAndRemove({ business: req.business.id });
     // Remove user
     await Business.findOneAndRemove({ _id: req.business.id });
 

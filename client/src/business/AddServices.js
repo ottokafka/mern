@@ -109,7 +109,7 @@ const AddServices = ({ addServices, history }) => {
           <input
             className="w-25"
             type="number"
-            placeholder="$15"
+            placeholder="$10"
             name="lineUp"
             value={lineUp}
             onChange={e => onChange(e)}
@@ -119,7 +119,7 @@ const AddServices = ({ addServices, history }) => {
           <input
             className="w-25"
             type="number"
-            placeholder="$15"
+            placeholder="$10"
             name="fade"
             value={fade}
             onChange={e => onChange(e)}

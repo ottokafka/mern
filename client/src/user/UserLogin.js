@@ -21,7 +21,7 @@ const UserLogin = ({ login, isAuthenticatedUser }) => {
     login({ email, password });
   };
 
-  if (isAuthenticatedUser) {
+  if (localStorage.token !== "undefined") {
     return <Redirect to="/dashboard_user" />;
   }
 

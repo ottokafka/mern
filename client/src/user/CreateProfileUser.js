@@ -7,7 +7,7 @@ import { createProfile, getCurrentProfile } from "../redux/actions/profileUser";
 const CreateProfileUser = ({
   createProfile,
   getCurrentProfile,
-  profileUser: { profileUser, loading },
+  profileUser: { profileUser },
   history
 }) => {
   const [formData, setFormData] = useState({
@@ -54,7 +54,7 @@ const CreateProfileUser = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  return loading && profileUser === null ? (
+  return profileUser === null ? (
     <Redirect to="/dashboard" />
   ) : (
     <Fragment>

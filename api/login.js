@@ -3,10 +3,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Business = require("../models/Business");
 const jwt = require("jsonwebtoken");
-const token = require("../token");
+const token = require("../tokenBusiness");
 
 // @route    GET api/login
-// @desc     Get business by token
+// @desc     Get the user information after you login. Grabs user info once you have a token
 // @access   Private
 router.get("/", token, async (req, res) => {
   try {
@@ -94,6 +94,7 @@ router.post("/business", async (req, res) => {
       }
     );
   } catch (err) {
+    console.log(err);
     console.log("server error");
     res.json("server error");
   }
@@ -141,113 +142,6 @@ router.post("/businessLogin", async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.json("server error");
-  }
-});
-
-// client model
-const ClientSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true
-  },
-  password: {
-    type: String,
-    required: true
-  },
-  date: {
-    type: Date,
-    default: Date.now
-  }
-});
-Client = mongoose.model("client", ClientSchema);
-
-// @route    POST api/login/client
-// @desc     Register client
-// @access   Public
-router.post("/client", async (req, res) => {
-  // need a model to refer to for the client and the business sign up
-
-  const { name, email, password } = req.body;
-
-  try {
-    // search db for email
-    let clientEmail = await Client.findOne({ email });
-
-    if (clientEmail) {
-      return res.status(400).json({ errors: [{ msg: "User already exists" }] });
-    }
-
-    client = new Client({
-      name,
-      email,
-      password
-    });
-
-    console.log(name, email, password);
-
-    // Save to the db
-    await client.save();
-
-    // give jwt to client
-    var token = jwt.sign(
-      { client: { id: client.id } },
-      "gateway",
-      {
-        expiresIn: 3600000
-      },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
-  } catch (err) {
-    console.log("server error");
-    res.json("server error");
-  }
-});
-
-// @route    POST api/login/clientLogin
-// @desc     Login client
-// @access   Public
-router.post("/clientLogin", async (req, res) => {
-  const { email, password } = req.body;
-
-  console.log(email, password);
-
-  try {
-    // search db for email
-    let clientInfo = await Client.findOne({ email });
-
-    if (!clientInfo) {
-      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
-    }
-
-    console.log(clientInfo);
-
-    if (password !== clientInfo.password) {
-      return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
-    }
-
-    // give jwt to client
-    var token = jwt.sign(
-      { client: { id: client.id } },
-      "gateway",
-      {
-        expiresIn: 3600000
-      },
-      (err, token) => {
-        if (err) throw err;
-        res.json({ token });
-      }
-    );
-  } catch (err) {
-    console.log("server error");
     res.json("server error");
   }
 });
