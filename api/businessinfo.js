@@ -3,6 +3,7 @@ const router = express.Router();
 const BusinessInfo = require("../models/BusinessInfo");
 const Business = require("../models/Business");
 const token = require("../tokenBusiness");
+const tokenUser = require("../tokenUser");
 
 // test route
 // GET api/businessinfo
@@ -130,7 +131,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// @route    DELETE api/business/:id
+// @route    DELETE api/businessinfo/:id
 // @desc     Delete business, and availability and services
 // @access   Private
 router.delete("/", token, async (req, res) => {
@@ -149,7 +150,39 @@ router.delete("/", token, async (req, res) => {
   }
 });
 
-// build an api that has all accessiated business info related to it from the token
+// @route    POST api/businessinfo/zip
+// @desc     search all business by zip code
+// @access   public
+router.post("/zip", tokenUser, async (req, res) => {
+  const { zip } = req.body;
+  console.log(zip);
+
+  try {
+    let businessInfo = await BusinessInfo.find({ "location.zip": zip });
+    res.json(businessInfo);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+// @route    POST api/businessinfo/city
+// @desc     search all business by city name
+// @access   public
+router.post("/city", tokenUser, async (req, res) => {
+  const { city } = req.body;
+  console.log(city);
+
+  try {
+    let businessInfo = await BusinessInfo.find({
+      "location.city": city
+    });
+    res.json(businessInfo);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server Error");
+  }
+});
 
 // export the router
 module.exports = router;

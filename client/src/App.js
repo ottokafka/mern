@@ -22,6 +22,8 @@ import { loadBusiness } from "./redux/actions/authBusiness";
 import UserLogin from "./user/UserLogin";
 import UserRegister from "./user/UserRegister";
 import DashboardUser from "./user/DashboardUser";
+import CreateProfileUser from "./user/CreateProfileUser";
+import Search from "./user/Search";
 
 // css
 import "./App.css";
@@ -51,6 +53,12 @@ const App = () => {
             <Route exact path="/login_user" component={UserLogin} />
             <Route exact path="/register_user" component={UserRegister} />
             <Route exact path="/dashboard_user" component={DashboardUser} />
+            <Route exact path="/search" component={Search} />
+            <Route
+              exact
+              path="/create_profile_user"
+              component={CreateProfileUser}
+            />
 
             <Route
               exact

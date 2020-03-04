@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -54,6 +54,11 @@ const CreateProfileBusiness = ({
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
+
+  let token = localStorage.getItem("token");
+  if (!token || localStorage.token === "undefined") {
+    return <Redirect to="/login_business" />;
+  }
 
   return (
     <Fragment>

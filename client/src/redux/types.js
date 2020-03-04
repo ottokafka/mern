@@ -20,6 +20,9 @@ export const AVAILABILITY = "AVAILABILITY";
 export const SERVICES = "SERVICES";
 
 // User
+export const SEARCH_ZIP = "SEARCH_ZIP";
+export const SEARCH_CITY = "SEARCH_CITY";
+export const SEARCH_ERROR = "SEARCH_ERROR";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
 export const SET_ALERT = "SET_ALERT";

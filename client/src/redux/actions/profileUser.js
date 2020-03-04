@@ -8,18 +8,21 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
-  GET_REPOS
+  GET_REPOS,
+  SEARCH_ZIP,
+  SEARCH_CITY,
+  SEARCH_ERROR
 } from "../types";
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
-  const token = localStorage.token;
-  //   console.log(token);
+  const tokenUser = localStorage.tokenUser;
+  //   console.log(tokenUser);
 
   const config = {
     headers: {
       "Content-Type": "application/json",
-      token: token
+      tokenUser: tokenUser
     }
   };
   try {
@@ -98,15 +101,15 @@ export const createProfile = (
   edit = false
 ) => async dispatch => {
   try {
-    const token = localStorage.token;
+    const tokenUser = localStorage.tokenUser;
     const config = {
       headers: {
         "Content-Type": "application/json",
-        token: token
+        tokenUser: tokenUser
       }
     };
 
-    const res = await axios.post("/api/businessinfo", formData, config);
+    const res = await axios.post("/api/profile", formData, config);
 
     dispatch({
       type: GET_PROFILE,
@@ -116,7 +119,7 @@ export const createProfile = (
     dispatch(setAlert(edit ? "Profile Updated" : "Profile Created", "success"));
 
     if (!edit) {
-      history.push("/dashboard_business");
+      history.push("/dashboard_user");
     }
   } catch (err) {
     console.log(err);
@@ -134,38 +137,65 @@ export const createProfile = (
   }
 };
 
-// Add Availability
-export const addAvailability = (formData, history) => async dispatch => {
+// Search by zip code
+export const searchZip = (formData, history) => async dispatch => {
   try {
-    const token = localStorage.token;
+    const tokenUser = localStorage.tokenUser;
     const config = {
       headers: {
         "Content-Type": "application/json",
-        token: token
+        tokenUser: tokenUser
       }
     };
 
-    const res = await axios.put("/api/availability", formData, config);
+    const res = await axios.post("/api/businessinfo/zip", formData, config);
     console.log(res.data);
 
     dispatch({
-      type: UPDATE_PROFILE,
+      type: SEARCH_ZIP,
       payload: res.data
     });
 
-    dispatch(setAlert("Availability Added", "success"));
+    dispatch(setAlert("Found business", "success"));
 
-    history.push("/dashboard_business");
+    // history.push("/dashboard_business");
   } catch (err) {
     console.log(err);
-    // const errors = err.response.data.errors;
-
-    // if (errors) {
-    //   errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
-    // }
 
     dispatch({
-      type: PROFILE_ERROR,
+      type: SEARCH_ERROR,
+      payload: err
+    });
+  }
+};
+
+// Search by city
+export const searchCity = (formData, history) => async dispatch => {
+  try {
+    const tokenUser = localStorage.tokenUser;
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        tokenUser: tokenUser
+      }
+    };
+
+    const res = await axios.post("/api/businessinfo/city", formData, config);
+    console.log(res.data);
+
+    dispatch({
+      type: SEARCH_CITY,
+      payload: res.data
+    });
+
+    dispatch(setAlert("Found business", "success"));
+
+    // history.push("/dashboard_business");
+  } catch (err) {
+    console.log(err);
+
+    dispatch({
+      type: SEARCH_ERROR,
       payload: err
     });
   }
@@ -174,11 +204,11 @@ export const addAvailability = (formData, history) => async dispatch => {
 // Add Services
 export const addServices = (formData, history) => async dispatch => {
   try {
-    const token = localStorage.token;
+    const tokenUser = localStorage.tokenUser;
     const config = {
       headers: {
         "Content-Type": "application/json",
-        token: token
+        tokenUser: tokenUser
       }
     };
 

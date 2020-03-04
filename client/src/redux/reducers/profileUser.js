@@ -12,6 +12,7 @@ const initialState = {
   profiles: [],
   repos: [],
   error: {}
+  // cityResults: {}
 };
 
 export default function(state = initialState, action) {

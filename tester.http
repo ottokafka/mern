@@ -233,13 +233,29 @@ Content-Type: application/json
     "password": "123456"
 }
 ### 
-
-
 post http://localhost:5000/api/user/loginUser
 Content-Type: application/json
 
 {
     "email": "samsam2@email.com",
     "password": "123456"
+}
+### 
+
+// search by zip code
+post http://localhost:5000/api/businessinfo/zip
+Content-Type: application/json
+
+{
+    "zip": "95209"
+}
+### 
+
+// search by city
+post http://localhost:5000/api/businessinfo/city
+Content-Type: application/json
+tokenUser: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU1ZjRlOTFjYjU3MGI2Y2QwNzFhZjE2In0sImlhdCI6MTU4MzMwNDMzNywiZXhwIjoxNTg2OTA0MzM3fQ.wJqP_fxqT36BV-1FqNGLx-ZhvLVWnKKqoXc7N9TnZGU
+{
+    "city": "stockton"
 }
 ### 
