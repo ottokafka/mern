@@ -122,7 +122,7 @@ const Navbar = ({
     </nav>
   );
 
-  if (isAuthenticatedUser === false || isAuthenticatedBusiness === false) {
+  if (isAuthenticatedUser === false && isAuthenticatedBusiness === false) {
     return <Fragment>{guestLinks}</Fragment>;
   } else if (isAuthenticatedBusiness === true) {
     return <Fragment>{authLinksBusiness}</Fragment>;

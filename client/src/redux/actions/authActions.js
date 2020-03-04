@@ -13,11 +13,11 @@ import {
 
 // Load User
 export const loadUser = () => async dispatch => {
-  let token = localStorage.token;
+  let tokenUser = localStorage.tokenUser;
   const config = {
     headers: {
       "Content-Type": "application/json",
-      token: token
+      tokenUser: tokenUser
     }
   };
 
@@ -49,7 +49,7 @@ export const registerUser = ({ name, email, password }) => async dispatch => {
   try {
     const res = await axios.post("/api/user", body, config);
 
-    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("tokenUser", res.data.tokenUser);
 
     dispatch({
       type: REGISTER_SUCCESS,
@@ -84,7 +84,7 @@ export const login = (email, password) => async dispatch => {
     const res = await axios.post("/api/user/loginUser", body, config);
     console.log(res.data);
 
-    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("tokenUser", res.data.tokenUser);
 
     dispatch({
       type: LOGIN_SUCCESS,

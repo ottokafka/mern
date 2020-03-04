@@ -21,7 +21,10 @@ const UserLogin = ({ login, isAuthenticatedUser }) => {
     login({ email, password });
   };
 
-  if (localStorage.token !== "undefined") {
+  let tokenUser = localStorage.tokenUser;
+  if (tokenUser === "undefined") {
+    localStorage.removeItem("tokenUser");
+  } else if (tokenUser) {
     return <Redirect to="/dashboard_user" />;
   }
 

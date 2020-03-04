@@ -9,7 +9,7 @@ const { check, validationResult } = require("express-validator");
 
 const Profile = require("../../models/user/Profile");
 const User = require("../../models/user/User");
-const token = require("../../tokenUser");
+const tokenUser = require("../../tokenUser");
 
 // const Post = require("../../models/Post");
 

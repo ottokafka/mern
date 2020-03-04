@@ -16,6 +16,13 @@ const UserRegister = ({ setAlert, registerUser, isAuthenticatedUser }) => {
 
   const { name, email, password, password2 } = formData;
 
+  let tokenUser = localStorage.tokenUser;
+  if (tokenUser === "undefined") {
+    localStorage.removeItem("tokenUser");
+  } else if (tokenUser) {
+    return <Redirect to="/dashboard_user" />;
+  }
+
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 

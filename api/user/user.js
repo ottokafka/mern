@@ -5,13 +5,13 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 // const config = require("config");
 const { check, validationResult } = require("express-validator");
-const token = require("../../tokenUser");
+const tokenUser = require("../../tokenUser");
 const User = require("../../models/user/User");
 
 // @route    GET api/user
-// @desc     Get business by token
+// @desc     Get business by tokenUser
 // @access   Private
-router.get("/", token, async (req, res) => {
+router.get("/", tokenUser, async (req, res) => {
   try {
     const user = await User.findById(req.user.id).select("-password");
     res.json(user);
@@ -78,9 +78,9 @@ router.post(
         {
           expiresIn: 3600000
         },
-        (err, token) => {
+        (err, tokenUser) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ tokenUser });
         }
       );
     } catch (err) {
@@ -128,9 +128,9 @@ router.post("/loginUser", async (req, res) => {
       {
         expiresIn: 3600000
       },
-      (err, token) => {
+      (err, tokenUser) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ tokenUser });
       }
     );
   } catch (err) {

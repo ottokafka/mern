@@ -9,14 +9,15 @@ import { getCurrentProfile, deleteAccount } from "../redux/actions/profileUser";
 const DashboardUser = ({
   getCurrentProfile,
   deleteAccount,
-  authUser: { user },
+  authUser: { user, isAuthenticatedUser },
   profileUser: { profileUser }
 }) => {
   useEffect(() => {
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  if (localStorage.token === "undefined") {
+  let tokenUser = localStorage.getItem("tokenUser");
+  if (!tokenUser || localStorage.tokenUser === "undefined") {
     return <Redirect to="/login_user" />;
   }
 
@@ -49,6 +50,7 @@ const DashboardUser = ({
     </Fragment>
   );
 };
+
 DashboardUser.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   deleteAccount: PropTypes.func.isRequired,

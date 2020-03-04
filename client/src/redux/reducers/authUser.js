@@ -10,9 +10,9 @@ import {
 } from "../types";
 
 const initialState = {
-  token: localStorage.getItem("token"),
-  isAuthenticatedUser: null,
-  business: null
+  tokenUser: localStorage.getItem("tokenUser"),
+  isAuthenticatedUser: false,
+  user: null
 };
 
 export default function(state = initialState, action) {
@@ -23,35 +23,35 @@ export default function(state = initialState, action) {
       return {
         ...state,
         isAuthenticatedUser: true,
-        business: payload
+        user: payload
       };
     case REGISTER_SUCCESS:
       return {
         ...state,
         ...payload,
         isAuthenticatedUser: true,
-        business: payload
+        user: payload
       };
     case LOGIN_SUCCESS:
       return {
         ...state,
         ...payload,
         isAuthenticatedUser: true,
-        business: payload
+        user: payload
       };
     case ACCOUNT_DELETED:
       return {
         ...state,
-        token: null,
+        tokenUser: null,
         isAuthenticatedUser: false,
-        business: null
+        user: null
       };
     case LOGOUT:
       return {
         ...state,
-        token: localStorage.removeItem("token"),
+        tokenUser: localStorage.removeItem("tokenUser"),
         isAuthenticatedUser: false,
-        business: null
+        user: null
       };
     default:
       return state;

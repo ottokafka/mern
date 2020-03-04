@@ -25,11 +25,13 @@ import DashboardUser from "./user/DashboardUser";
 
 // css
 import "./App.css";
+import { loadUser } from "./redux/actions/authActions";
 
 const App = () => {
-  //  redux action in authBusiness if token login axios request for business
+  // in redux action loadBusiness by token and run api to get user data back
   useEffect(() => {
     store.dispatch(loadBusiness());
+    store.dispatch(loadUser());
   }, []);
 
   return (
