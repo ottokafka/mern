@@ -38,6 +38,7 @@ router.get("/me", token, async (req, res) => {
 // @access   Private
 router.post("/", token, async (req, res) => {
   const {
+    company,
     address,
     city,
     state,

@@ -70,7 +70,7 @@ const UserLogin = ({ login, isAuthenticatedUser }) => {
         </form>
 
         <p className="my-1">
-          Already have an account? <Link to="/login_user">Sign In</Link>
+          Don't have an account? <Link to="/register_user">Sign up</Link>
         </p>
       </div>
     </Fragment>

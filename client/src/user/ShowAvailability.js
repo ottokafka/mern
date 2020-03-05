@@ -44,7 +44,9 @@ const ShowAvailability = ({
                     <li>Zip: {searchedId.location.zip}</li>
                   </ul>
                   <small class="text-muted">2 miles</small>
-                  <hr></hr>
+                  <p>
+                    <small className="text-muted">Availability</small>
+                  </p>
                   <ul className="list-unstyled mt-3 mb-4">
                     <li>
                       Monday: {searchedId.availability.start_time1} -{" "}

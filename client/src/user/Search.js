@@ -7,7 +7,8 @@ import { searchCity } from "../redux/actions/profileUser";
 const Search = ({
   searchCity,
   history,
-  searchReducer: { searchReducer, searched, cityResults, loading }
+  searchReducer: { searchReducer, searched, cityResults, loading },
+  authUser: { isAuthenticatedUser }
 }) => {
   const onSubmitStockton = e => {
     e.preventDefault();
@@ -18,6 +19,10 @@ const Search = ({
     e.preventDefault();
     searchCity({ city: "sacramento" }, history);
   };
+
+  if (isAuthenticatedUser === false) {
+    return <Redirect to="login_user"></Redirect>;
+  }
 
   if (loading === true) {
     return (
@@ -122,7 +127,8 @@ Search.propTypes = {
 
 const mapStateToProps = state => ({
   searchReducer: state.searchReducer,
-  cityResults: state.cityResults
+  cityResults: state.cityResults,
+  authUser: state.authUser
 });
 
 export default connect(mapStateToProps, {
