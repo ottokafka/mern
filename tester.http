@@ -195,14 +195,11 @@ Content-Type: application/json
 ### 
 
 //  Bussiness info by db :id
-GET http://localhost:5000/api/businessinfo/5e511ea4571a52acd24d373f
+GET http://localhost:5000/api/businessinfo/business/5e5bb9ed91a5a80a39cc8979
 Content-Type: application/json
 ### 
 
-//  Bussiness by business :id
-GET http://localhost:5000/api/business/5e511ea4571a52acd24d373f
-Content-Type: application/json
-### 
+
 
 // Delete a Bussiness 
 DELETE  http://localhost:5000/api/businessinfo
@@ -255,6 +252,7 @@ Content-Type: application/json
 post http://localhost:5000/api/businessinfo/city
 Content-Type: application/json
 tokenUser: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU1ZjRlOTFjYjU3MGI2Y2QwNzFhZjE2In0sImlhdCI6MTU4MzMwNDMzNywiZXhwIjoxNTg2OTA0MzM3fQ.wJqP_fxqT36BV-1FqNGLx-ZhvLVWnKKqoXc7N9TnZGU
+
 {
     "city": "stockton"
 }

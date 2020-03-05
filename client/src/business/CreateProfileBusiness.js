@@ -14,6 +14,7 @@ const CreateProfileBusiness = ({
   history
 }) => {
   const [formData, setFormData] = useState({
+    company: "",
     address: "",
     city: "",
     state: "",
@@ -30,6 +31,7 @@ const CreateProfileBusiness = ({
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   const {
+    company,
     address,
     city,
     state,
@@ -67,6 +69,14 @@ const CreateProfileBusiness = ({
           <img className="mb-4" src={""} alt="" width="72" height="72" />
           <h1 className="h3 mb-3 font-weight-normal">Location Information</h1>
 
+          <input
+            className="form-control"
+            type="text"
+            placeholder="company"
+            name="company"
+            value={company}
+            onChange={e => onChange(e)}
+          />
           <input
             className="form-control"
             type="text"

@@ -1,8 +1,9 @@
-import { SEARCH_CITY, SEARCH_ZIP } from "../types";
+import { SEARCH_CITY, SEARCH_ZIP, SEARCH_BUSINESS_INFO_BY_ID } from "../types";
 
 const initialState = {
   searched: null,
-  cityResults: {}
+  cityResults: {},
+  searchedId: {}
 };
 
 export default function(state = initialState, action) {
@@ -17,6 +18,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         cityResults: payload,
+        searched: true
+      };
+    case SEARCH_BUSINESS_INFO_BY_ID:
+      return {
+        ...state,
+        searchedId: payload,
         searched: true
       };
 

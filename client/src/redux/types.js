@@ -23,8 +23,9 @@ export const SERVICES = "SERVICES";
 export const SEARCH_ZIP = "SEARCH_ZIP";
 export const SEARCH_CITY = "SEARCH_CITY";
 export const SEARCH_ERROR = "SEARCH_ERROR";
-export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const SEARCH_BUSINESS_INFO_BY_ID = "SEARCH_BUSINESS_INFO_BY_ID";
 
+export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_ALERT = "SET_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";
 

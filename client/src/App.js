@@ -24,6 +24,7 @@ import UserRegister from "./user/UserRegister";
 import DashboardUser from "./user/DashboardUser";
 import CreateProfileUser from "./user/CreateProfileUser";
 import Search from "./user/Search";
+import ShowAvailability from "./user/ShowAvailability";
 
 // css
 import "./App.css";
@@ -54,6 +55,12 @@ const App = () => {
             <Route exact path="/register_user" component={UserRegister} />
             <Route exact path="/dashboard_user" component={DashboardUser} />
             <Route exact path="/search" component={Search} />
+            <Route
+              exact
+              path="/show_availability/:id"
+              component={ShowAvailability}
+            />
+
             <Route
               exact
               path="/create_profile_user"

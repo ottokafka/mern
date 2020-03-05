@@ -117,12 +117,14 @@ router.get("/all", async (req, res) => {
 });
 
 // @route    GET api/businessinfo/:id
-// @desc     get business info by db _id
+// @desc     get business info by business id
 // @access   Public
-router.get("/:id", async (req, res) => {
+router.get("/business/:business_id", async (req, res) => {
   try {
     // in find req.params - this grabs the :id and searches db for it
-    const businesses = await BusinessInfo.find(req.params.id);
+    const businesses = await BusinessInfo.findOne({
+      business: req.params.business_id
+    });
     res.json(businesses);
   } catch (err) {
     console.error(err.message);

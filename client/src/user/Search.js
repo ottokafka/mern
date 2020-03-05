@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import { Link, withRouter, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
@@ -20,7 +20,6 @@ const Search = ({
 
   const onSubmit = e => {
     e.preventDefault();
-    // searchZip(formData, history);
     searchCity(formData, history);
   };
 
@@ -65,11 +64,35 @@ const Search = ({
       <Fragment>
         <div>
           {cityResults.map(result => (
-            <div>
-              <p key={result._id} result={result}></p>
-              <p>Address: {result.location.address}</p>
-              <p>City: {result.location.city}</p>
-              <p>Zip: {result.location.zip}</p>
+            <div className="container">
+              <div className="card-deck mb-3 text-center">
+                {/* single card below */}
+                <div className="card mb-4 shadow-sm">
+                  <div className="card-header">
+                    <h4 className="my-0 font-weight-normal">
+                      {result.company}
+                    </h4>
+                  </div>
+                  <div className="card-body">
+                    <h1 className="card-title pricing-card-title">
+                      <small className="text-muted"></small>
+                    </h1>
+                    <ul className="list-unstyled mt-3 mb-4">
+                      <li>Address: {result.location.address} </li>
+                      <li>City: {result.location.city}</li>
+                      <li>State: {result.location.state}</li>
+                      <li>Zip: {result.location.zip}</li>
+                    </ul>
+                    <small class="text-muted">2 miles</small>
+                    <Link
+                      to={`/show_availability/${result.business}`}
+                      className="btn btn-primary"
+                    >
+                      More Info
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           ))}
         </div>

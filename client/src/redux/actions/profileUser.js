@@ -11,7 +11,8 @@ import {
   GET_REPOS,
   SEARCH_ZIP,
   SEARCH_CITY,
-  SEARCH_ERROR
+  SEARCH_ERROR,
+  SEARCH_BUSINESS_INFO_BY_ID
 } from "../types";
 
 // Get current users profile
@@ -39,6 +40,23 @@ export const getCurrentProfile = () => async dispatch => {
     });
   }
   //   payload: { msg: err.response.statusText, status: err.response.status }
+};
+
+// Get business by id this is for user to see
+export const getBusinessById = businessId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/businessinfo/business/${businessId}`);
+
+    dispatch({
+      type: SEARCH_BUSINESS_INFO_BY_ID,
+      payload: res.data
+    });
+  } catch (err) {
+    dispatch({
+      type: SEARCH_ERROR,
+      payload: err
+    });
+  }
 };
 
 // Get all profiles
