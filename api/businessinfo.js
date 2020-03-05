@@ -43,7 +43,6 @@ router.post("/", token, async (req, res) => {
     city,
     state,
     zip,
-    company,
     youtube,
     twitter,
     facebook,
