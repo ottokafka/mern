@@ -115,447 +115,449 @@ const AddAvailability = ({ addAvailability, history }) => {
 
   return (
     <Fragment>
-      <h6 className="large text-primary">Add your Availability</h6>
+      <div className="container">
+        <h6 className="large text-primary">Add your Availability</h6>
 
-      <form
-        className="form"
-        onSubmit={e => {
-          e.preventDefault();
-          addAvailability(formData, history);
-        }}
-      >
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Monday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
-                  <input
-                    type="checkbox"
-                    name="work1"
-                    checked={work1}
-                    value={work1}
-                    onClick={() => toggleMonday(!mondayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work1: !work1 });
-                    }}
-                  />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
+        <form
+          className="form"
+          onSubmit={e => {
+            e.preventDefault();
+            addAvailability(formData, history);
+          }}
+        >
+          <Fragment>
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Monday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work1"
+                      checked={work1}
+                      value={work1}
+                      onClick={() => toggleMonday(!mondayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work1: !work1 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
-          </div>
-        </Fragment>
+          </Fragment>
 
-        {mondayInputs && (
-          <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time1"
-                  value={start_time1}
-                  onChange={e => onChange(e)}
-                />
+          {mondayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
+                  <input
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time1"
+                    value={start_time1}
+                    onChange={e => onChange(e)}
+                  />
 
-                {/* <div className=" col border-right border-dark">
+                  {/* <div className=" col border-right border-dark">
                 
                 </div> */}
+                </div>
+                <div className="row">
+                  {" "}
+                  <label className="col">to </label>
+                  <input
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time1"
+                    value={end_time1}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
               </div>
-              <div className="row">
-                {" "}
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time1"
-                  value={end_time1}
-                  onChange={e => onChange(e)}
-                />
+            </Fragment>
+          )}
+          {/* end of Monday */}
+          <Fragment>
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Tuesday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work2"
+                      checked={work2}
+                      value={work2}
+                      onClick={() => toggleTuesday(!tuesdayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work2: !work2 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
           </Fragment>
-        )}
-        {/* end of Monday */}
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Tuesday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
+
+          {tuesdayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
                   <input
-                    type="checkbox"
-                    name="work2"
-                    checked={work2}
-                    value={work2}
-                    onClick={() => toggleTuesday(!tuesdayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work2: !work2 });
-                    }}
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time2"
+                    value={start_time2}
+                    onChange={e => onChange(e)}
                   />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </Fragment>
 
-        {tuesdayInputs && (
-          <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time2"
-                  value={start_time2}
-                  onChange={e => onChange(e)}
-                />
-
-                {/* <div className=" col border-right border-dark">
+                  {/* <div className=" col border-right border-dark">
                 
                 </div> */}
-              </div>
-              <div className="row">
-                {" "}
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time2"
-                  value={end_time2}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-            </div>
-          </Fragment>
-        )}
-
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Wednesday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
+                </div>
+                <div className="row">
+                  {" "}
+                  <label className="col">to </label>
                   <input
-                    type="checkbox"
-                    name="work3"
-                    checked={work3}
-                    value={work3}
-                    onClick={() => toggleWednesday(!wednesdayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work3: !work3 });
-                    }}
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time2"
+                    value={end_time2}
+                    onChange={e => onChange(e)}
                   />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
+                </div>
               </div>
-            </div>
-          </div>
-        </Fragment>
+            </Fragment>
+          )}
 
-        {wednesdayInputs && (
           <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time3"
-                  value={start_time3}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-              <div className="row">
-                {" "}
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time3"
-                  value={end_time3}
-                  onChange={e => onChange(e)}
-                />
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Wednesday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work3"
+                      checked={work3}
+                      value={work3}
+                      onClick={() => toggleWednesday(!wednesdayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work3: !work3 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
           </Fragment>
-        )}
 
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Thursday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
+          {wednesdayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
                   <input
-                    type="checkbox"
-                    name="work4"
-                    checked={work4}
-                    value={work4}
-                    onClick={() => toggleThursday(!thursdayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work4: !work4 });
-                    }}
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time3"
+                    value={start_time3}
+                    onChange={e => onChange(e)}
                   />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </Fragment>
-
-        {thursdayInputs && (
-          <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time4"
-                  value={start_time4}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-              <div className="row">
-                {" "}
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time4"
-                  value={end_time4}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-            </div>
-          </Fragment>
-        )}
-
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Friday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
+                </div>
+                <div className="row">
+                  {" "}
+                  <label className="col">to </label>
                   <input
-                    type="checkbox"
-                    name="work5"
-                    checked={work5}
-                    value={work5}
-                    onClick={() => toggleFriday(!fridayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work5: !work5 });
-                    }}
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time3"
+                    value={end_time3}
+                    onChange={e => onChange(e)}
                   />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
+                </div>
               </div>
-            </div>
-          </div>
-        </Fragment>
+            </Fragment>
+          )}
 
-        {fridayInputs && (
           <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time5"
-                  value={start_time5}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-              <div className="row">
-                {" "}
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time5"
-                  value={end_time5}
-                  onChange={e => onChange(e)}
-                />
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Thursday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work4"
+                      checked={work4}
+                      value={work4}
+                      onClick={() => toggleThursday(!thursdayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work4: !work4 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
           </Fragment>
-        )}
 
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Saturday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
+          {thursdayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
                   <input
-                    type="checkbox"
-                    name="work6"
-                    checked={work6}
-                    value={work6}
-                    onClick={() => toggleSaturday(!saturdayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work6: !work6 });
-                    }}
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time4"
+                    value={start_time4}
+                    onChange={e => onChange(e)}
                   />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </Fragment>
-
-        {saturdayInputs && (
-          <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time6"
-                  value={start_time6}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-              <div className="row">
-                {" "}
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time6"
-                  value={end_time6}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-            </div>
-          </Fragment>
-        )}
-
-        <Fragment>
-          <div className="container">
-            <div className="row border-top border-bottom border-dark">
-              <div className="col">
-                <p className="m-4">
-                  <small>Sunday</small>
-                </p>
-              </div>
-              <div className="col">
-                <label className=" rocker rocker-small">
+                </div>
+                <div className="row">
+                  {" "}
+                  <label className="col">to </label>
                   <input
-                    type="checkbox"
-                    name="work7"
-                    checked={work7}
-                    value={work7}
-                    onClick={() => toggleSunday(!sundayInputs)}
-                    onChange={() => {
-                      setFormData({ ...formData, work7: !work7 });
-                    }}
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time4"
+                    value={end_time4}
+                    onChange={e => onChange(e)}
                   />
-                  <span className="switch-left">
-                    <small>Yes</small>
-                  </span>
-                  <span className="switch-right">
-                    <small>No</small>
-                  </span>
-                </label>
+                </div>
               </div>
-            </div>
-          </div>
-        </Fragment>
+            </Fragment>
+          )}
 
-        {sundayInputs && (
           <Fragment>
-            <div className="container border-bottom border-dark">
-              <div className="row ">
-                <label className="col">hours</label>
-                <input
-                  className="timeSelector w-50"
-                  type="time"
-                  name="start_time7"
-                  value={start_time7}
-                  onChange={e => onChange(e)}
-                />
-              </div>
-              <div className="row">
-                <label className="col">to </label>
-                <input
-                  className=" timeSelector w-50"
-                  type="time"
-                  name="end_time7"
-                  value={end_time7}
-                  onChange={e => onChange(e)}
-                />
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Friday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work5"
+                      checked={work5}
+                      value={work5}
+                      onClick={() => toggleFriday(!fridayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work5: !work5 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
               </div>
             </div>
           </Fragment>
-        )}
 
-        <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" to="/dashboard">
-          Go Back
-        </Link>
-      </form>
+          {fridayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
+                  <input
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time5"
+                    value={start_time5}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
+                <div className="row">
+                  {" "}
+                  <label className="col">to </label>
+                  <input
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time5"
+                    value={end_time5}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
+              </div>
+            </Fragment>
+          )}
+
+          <Fragment>
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Saturday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work6"
+                      checked={work6}
+                      value={work6}
+                      onClick={() => toggleSaturday(!saturdayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work6: !work6 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </Fragment>
+
+          {saturdayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
+                  <input
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time6"
+                    value={start_time6}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
+                <div className="row">
+                  {" "}
+                  <label className="col">to </label>
+                  <input
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time6"
+                    value={end_time6}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
+              </div>
+            </Fragment>
+          )}
+
+          <Fragment>
+            <div className="container">
+              <div className="row border-top border-bottom border-dark">
+                <div className="col">
+                  <p className="m-4">
+                    <small>Sunday</small>
+                  </p>
+                </div>
+                <div className="col">
+                  <label className=" rocker rocker-small">
+                    <input
+                      type="checkbox"
+                      name="work7"
+                      checked={work7}
+                      value={work7}
+                      onClick={() => toggleSunday(!sundayInputs)}
+                      onChange={() => {
+                        setFormData({ ...formData, work7: !work7 });
+                      }}
+                    />
+                    <span className="switch-left">
+                      <small>Yes</small>
+                    </span>
+                    <span className="switch-right">
+                      <small>No</small>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </Fragment>
+
+          {sundayInputs && (
+            <Fragment>
+              <div className="container border-bottom border-dark">
+                <div className="row ">
+                  <label className="col">hours</label>
+                  <input
+                    className="timeSelector w-50"
+                    type="time"
+                    name="start_time7"
+                    value={start_time7}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
+                <div className="row">
+                  <label className="col">to </label>
+                  <input
+                    className=" timeSelector w-50"
+                    type="time"
+                    name="end_time7"
+                    value={end_time7}
+                    onChange={e => onChange(e)}
+                  />
+                </div>
+              </div>
+            </Fragment>
+          )}
+
+          <input type="submit" className="btn btn-primary my-1" />
+          <Link className="btn btn-light my-1" to="/dashboard">
+            Go Back
+          </Link>
+        </form>
+      </div>
     </Fragment>
   );
 };

@@ -77,7 +77,7 @@ const Search = ({
                       <li>State: {result.location.state}</li>
                       <li>Zip: {result.location.zip}</li>
                     </ul>
-                    <small class="text-muted">2 miles</small>
+                    <p class="text-muted">2 miles</p>
                     <Link
                       to={`/show_availability/${result.business}`}
                       className="btn btn-primary"
