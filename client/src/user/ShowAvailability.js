@@ -7,14 +7,19 @@ import { getBusinessById } from "../redux/actions/profileUser";
 const ShowAvailability = ({
   getBusinessById,
   match,
-  searchReducer: { searched, searchedId }
+  searchReducer: { searched, searchedId, loadingId, loading }
 }) => {
   useEffect(() => {
     getBusinessById(match.params.id);
   }, [getBusinessById, match.params.id]);
 
-  if (searched === null) {
-    return <h1>NOthing</h1>;
+  let tokenUser = localStorage.tokenUser;
+  if (!tokenUser || tokenUser === "undefined") {
+    return <Redirect to="/login_user" />;
+  }
+
+  if (loading === true || loadingId === null) {
+    return <h1>Loading Please wait</h1>;
   } else {
     return (
       <Fragment>
@@ -39,11 +44,27 @@ const ShowAvailability = ({
                     <li>Zip: {searchedId.location.zip}</li>
                   </ul>
                   <small class="text-muted">2 miles</small>
-                  <Link
-                    to={`/show_availability/${searchedId.business}`}
-                    className="btn btn-primary"
-                  >
-                    More Info
+                  <hr></hr>
+                  <ul className="list-unstyled mt-3 mb-4">
+                    <li>
+                      Monday: {searchedId.availability.start_time1} -{" "}
+                      {searchedId.availability.end_time1}
+                    </li>
+                    <li>
+                      Tuesday: {searchedId.availability.start_time2} -{" "}
+                      {searchedId.availability.end_time2}
+                    </li>
+                    <li>
+                      Wednesday: {searchedId.availability.start_time3} -{" "}
+                      {searchedId.availability.end_time3}
+                    </li>
+                    <li>
+                      Thursday: {searchedId.availability.start_time4} -{" "}
+                      {searchedId.availability.end_time4}
+                    </li>
+                  </ul>
+                  <Link to="/search" className="btn btn-primary">
+                    Back
                   </Link>
                 </div>
               </div>
@@ -59,10 +80,12 @@ ShowAvailability.propTypes = {
   getBusinessById: PropTypes.func.isRequired
 };
 
+// on load and display error is something is undefined because api data has not yet been fetched. map it to mapState to props
 const mapStateToProps = state => ({
-  searchReducer: state.searchReducer
+  searchReducer: state.searchReducer,
+  searchedId: state.searchedId
 });
 
-export default connect(mapStateToProps, { getBusinessById })(
-  withRouter(ShowAvailability)
-);
+export default connect(mapStateToProps, {
+  getBusinessById
+})(withRouter(ShowAvailability));

@@ -7,53 +7,42 @@ import { searchCity } from "../redux/actions/profileUser";
 const Search = ({
   searchCity,
   history,
-  searchReducer: { searchReducer, searched, cityResults }
+  searchReducer: { searchReducer, searched, cityResults, loading }
 }) => {
-  const [formData, setFormData] = useState({
-    city: ""
-  });
-
-  const { city } = formData;
-
-  const onChange = e =>
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-
-  const onSubmit = e => {
+  const onSubmitStockton = e => {
     e.preventDefault();
-    searchCity(formData, history);
+    searchCity({ city: "stockton" }, history);
   };
 
-  if (searched === null) {
+  const onSubmitSacramento = e => {
+    e.preventDefault();
+    searchCity({ city: "sacramento" }, history);
+  };
+
+  if (loading === true) {
     return (
       <Fragment>
         <div className="container text-center">
-          <form className="form-signin" onSubmit={e => onSubmit(e)}>
+          <form className="form-signin" onSubmit={e => onSubmitSacramento(e)}>
             <img className="mb-4" src={""} alt="" width="72" height="72" />
             <h1 className="h3 mb-3 font-weight-normal">
               Search for a business
             </h1>
 
             <input
-              className="form-control"
-              type="text"
-              placeholder="city"
-              name="city"
-              value={city}
-              onChange={e => onChange(e)}
-            />
-            {/* <input
-                className="form-control"
-                type="text"
-                placeholder="zip"
-                name="zip"
-                value={zip}
-                onChange={e => onChange(e)}
-              /> */}
-
-            <input
               className="btn btn-lg btn-primary btn-block mt-5"
               type="submit"
-              value="Search"
+              name="city"
+              value="sacramento"
+            />
+          </form>
+
+          <form className="form-signin" onSubmit={e => onSubmitStockton(e)}>
+            <input
+              className="btn btn-lg btn-success btn-block mt-5"
+              type="submit"
+              name="city"
+              value="stockton"
             />
           </form>
         </div>
@@ -95,6 +84,31 @@ const Search = ({
               </div>
             </div>
           ))}
+
+          <div className="container text-center">
+            <form className="form-signin" onSubmit={e => onSubmitSacramento(e)}>
+              <img className="mb-4" src={""} alt="" width="72" height="72" />
+              <h1 className="h3 mb-3 font-weight-normal">
+                Search for a business
+              </h1>
+
+              <input
+                className="btn btn-lg btn-primary btn-block mt-5"
+                type="submit"
+                name="city"
+                value="sacramento"
+              />
+            </form>
+
+            <form className="form-signin" onSubmit={e => onSubmitStockton(e)}>
+              <input
+                className="btn btn-lg btn-success btn-block mt-5"
+                type="submit"
+                name="city"
+                value="stockton"
+              />
+            </form>
+          </div>
         </div>
       </Fragment>
     );
@@ -102,12 +116,15 @@ const Search = ({
 };
 
 Search.propTypes = {
-  //   searchZip: PropTypes.func.isRequired,
+  cityResults: PropTypes.func.isRequired,
   searchCity: PropTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
-  searchReducer: state.searchReducer
+  searchReducer: state.searchReducer,
+  cityResults: state.cityResults
 });
 
-export default connect(mapStateToProps, { searchCity })(withRouter(Search));
+export default connect(mapStateToProps, {
+  searchCity
+})(withRouter(Search));

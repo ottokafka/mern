@@ -12,8 +12,26 @@ import {
   SEARCH_ZIP,
   SEARCH_CITY,
   SEARCH_ERROR,
-  SEARCH_BUSINESS_INFO_BY_ID
+  SEARCH_BUSINESS_INFO_BY_ID,
+  START_LOADING,
+  FINISH_LOADING
 } from "../types";
+
+// loading page function
+export const startLoading = () => async dispatch => {
+  dispatch({
+    type: START_LOADING,
+    payload: "Page loading"
+  });
+};
+
+// loading page function
+export const finishLoading = () => async dispatch => {
+  dispatch({
+    type: FINISH_LOADING,
+    payload: "Page finish loading"
+  });
+};
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {

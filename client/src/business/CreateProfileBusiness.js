@@ -13,6 +13,7 @@ const CreateProfileBusiness = ({
   profileBusiness: { profileBusiness },
   history
 }) => {
+  // preload location fields and availability fields and service fields with empty strings
   const [formData, setFormData] = useState({
     company: "",
     address: "",
