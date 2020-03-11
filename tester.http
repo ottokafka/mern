@@ -251,9 +251,9 @@ Content-Type: application/json
 // search by city
 post http://localhost:5000/api/businessinfo/city
 Content-Type: application/json
-tokenUser: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU1ZjRlOTFjYjU3MGI2Y2QwNzFhZjE2In0sImlhdCI6MTU4MzMwNDMzNywiZXhwIjoxNTg2OTA0MzM3fQ.wJqP_fxqT36BV-1FqNGLx-ZhvLVWnKKqoXc7N9TnZGU
+# tokenUser: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNWU1ZjRlOTFjYjU3MGI2Y2QwNzFhZjE2In0sImlhdCI6MTU4MzMwNDMzNywiZXhwIjoxNTg2OTA0MzM3fQ.wJqP_fxqT36BV-1FqNGLx-ZhvLVWnKKqoXc7N9TnZGU
 
 {
-    "city": "stockton"
+    "city": "Sacramento"
 }
 ### 

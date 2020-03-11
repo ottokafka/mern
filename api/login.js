@@ -43,7 +43,7 @@ router.get("/tokenUserID", tokenBusiness, async (req, res) => {
 
 // GET api/login/test
 router.get("/test", async (req, res) => {
-  res.json("Login Get test route is working");
+  res.json({ msg: "Login Get test route is working" });
 });
 
 // POST api/login/test

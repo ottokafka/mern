@@ -171,15 +171,16 @@ router.post("/zip", tokenUser, async (req, res) => {
 // @route    POST api/businessinfo/city
 // @desc     search all business by city name
 // @access   public
-router.post("/city", tokenUser, async (req, res) => {
+router.post("/city", async (req, res) => {
   const { city } = req.body;
-  console.log(city);
+  console.log(req.body);
 
   try {
     let businessInfo = await BusinessInfo.find({
       "location.city": city
     });
     res.json(businessInfo);
+    console.log(businessInfo);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
