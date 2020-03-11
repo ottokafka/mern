@@ -1,14 +1,14 @@
 
 // test Token
-GET http://localhost:5000/api/login/token
+GET http://localhost:5000/api/login/tokenBusiness
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
 ###
 
 // test Token and see all user data 
 GET http://localhost:5000/api/login/tokenUserID
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
 ###
 
 // test GET api
@@ -35,7 +35,7 @@ Content-Type: application/json
 {
     "firstName" : "John",
     "lastName": "Mick",
-    "email": "business3@email.com",
+    "email": "test1@email.com",
     "password": "123456",
     "phoneNumber": "123456789"
 }
@@ -59,7 +59,7 @@ POST http://localhost:5000/api/login/businessLogin
 Content-Type: application/json
 
 {
-     "email": "sam1234@email.com",
+     "email": "test1@email.com",
      "password": "123456"
 }
 ###
@@ -69,13 +69,13 @@ Content-Type: application/json
 // test GET api
 GET http://localhost:5000/api/availability/test
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
+x-auth-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNGVjM2M3ZjUwODM3MjI0ODM5ZWRlNCJ9LCJpYXQiOjE1ODIyMjAyMzEsImV4cCI6MTU4NTgyMDIzMX0.htA0v6Id5K6PlkJ8u34cJKlEtB1WcOndlW-OBGEEF3E
 ###
 
 // Availability
 POST http://localhost:5000/api/availability
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWFlMTQzNzQ5NzI3MmI1OGQ5NTc5MiJ9LCJpYXQiOjE1ODMwMTQyMTEsImV4cCI6MTU4NjYxNDIxMX0.LGpegMzTwtYHcX3GpGitvSxQAbEIQ4Brsnd3VGYbFH0
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWFlMTQzNzQ5NzI3MmI1OGQ5NTc5MiJ9LCJpYXQiOjE1ODMwMTQyMTEsImV4cCI6MTU4NjYxNDIxMX0.LGpegMzTwtYHcX3GpGitvSxQAbEIQ4Brsnd3VGYbFH0
 
 {
       "day_of_week1": "Monday",
@@ -127,7 +127,7 @@ token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWFlMTQz
 // Grab availability data from business
 GET http://localhost:5000/api/availability/work
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+x-auth-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 
 ### 
 
@@ -139,7 +139,7 @@ Content-Type: application/json
 // BussinessInfo  route
 POST http://localhost:5000/api/businessinfo
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIyNGNmMDAwMGViYzVkYmVjMyJ9LCJpYXQiOjE1ODMwNzk2MDMsImV4cCI6MTU4NjY3OTYwM30.3ihJ36YjdN2bGyQMYEUAe66nXDXcZG-bmSwf8j6yxNk
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIyNGNmMDAwMGViYzVkYmVjMyJ9LCJpYXQiOjE1ODMwNzk2MDMsImV4cCI6MTU4NjY3OTYwM30.3ihJ36YjdN2bGyQMYEUAe66nXDXcZG-bmSwf8j6yxNk
 
 {
 "company":"Fuck",
@@ -161,7 +161,7 @@ Content-Type: application/json
 // services for hairstyles and cost saving to db
 POST http://localhost:5000/api/services
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIyNGNmMDAwMGViYzVkYmVjMyJ9LCJpYXQiOjE1ODMwNzk2MDMsImV4cCI6MTU4NjY3OTYwM30.3ihJ36YjdN2bGyQMYEUAe66nXDXcZG-bmSwf8j6yxNk
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIyNGNmMDAwMGViYzVkYmVjMyJ9LCJpYXQiOjE1ODMwNzk2MDMsImV4cCI6MTU4NjY3OTYwM30.3ihJ36YjdN2bGyQMYEUAe66nXDXcZG-bmSwf8j6yxNk
 
 {
 "lineUp":15,
@@ -204,13 +204,13 @@ Content-Type: application/json
 // Delete a Bussiness 
 DELETE  http://localhost:5000/api/businessinfo
 Content-Type: application/json
-x-auth-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
+x-auth-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTEwNTRlMDEwNDAyNTIzNDUyNmIwZCJ9LCJpYXQiOjE1ODIzNjgwNzksImV4cCI6MTU4NTk2ODA3OX0.zR1akeuGqG9-q793Rb9fkdNH2Mw9KiON49U9hpXQyFs
 ### 
 
 //  Bussiness me
 GET http://localhost:5000/api/businessinfo/me
 Content-Type: application/json
-token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
 
 ### 
 //todo

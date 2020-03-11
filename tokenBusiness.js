@@ -1,18 +1,20 @@
 const jwt = require("jsonwebtoken");
 
 module.exports = function(req, res, next) {
-  const token = req.header("token");
+  const tokenBusiness = req.header("tokenBusiness");
 
-  //check if not token
-  if (!token) {
-    return res.status(401).json({ msg: "no token, authorization denied" });
+  //check if not tokenBusiness
+  if (!tokenBusiness) {
+    return res
+      .status(401)
+      .json({ msg: "no tokenBusiness, authorization denied" });
   }
 
   try {
-    const decoded = jwt.verify(token, "gateway");
+    const decoded = jwt.verify(tokenBusiness, "gateway");
     req.business = decoded.business;
     next();
   } catch (err) {
-    res.status(401).json({ msg: "token not valid" });
+    res.status(401).json({ msg: "tokenBusiness not valid" });
   }
 };

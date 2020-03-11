@@ -71,7 +71,7 @@ router.post(
         }
       };
 
-      // give jwt to business
+      // give jwt to user
       jwt.sign(
         payload,
         "gateway",

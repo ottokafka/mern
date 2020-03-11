@@ -13,11 +13,11 @@ import {
 
 // Load User
 export const loadBusiness = () => async dispatch => {
-  let token = localStorage.token;
+  let tokenBusiness = localStorage.tokenBusiness;
   const config = {
     headers: {
       "Content-Type": "application/json",
-      token: token
+      tokenBusiness: tokenBusiness
     }
   };
 
@@ -51,7 +51,7 @@ export const register = (name, email, password) => async dispatch => {
 
     console.log(res.data);
 
-    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("tokenBusiness", res.data.tokenBusiness);
 
     dispatch({
       type: REGISTER_BUSINESS_SUCCESS,
@@ -89,7 +89,7 @@ export const login = (email, password) => async dispatch => {
     // show our results from the server
     console.log(res.data);
 
-    localStorage.setItem("token", res.data.token);
+    localStorage.setItem("tokenBusiness", res.data.tokenBusiness);
 
     dispatch({
       type: LOGIN_BUSINESS_SUCCESS,

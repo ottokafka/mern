@@ -7,7 +7,7 @@ import {
 } from "../types";
 
 const initialState = {
-  token: localStorage.getItem("token"),
+  tokenBusiness: localStorage.getItem("tokenBusiness"),
   isAuthenticatedBusiness: false,
   business: null
 };
@@ -38,14 +38,14 @@ export default function(state = initialState, action) {
     case BUSINESS_ACCOUNT_DELETED:
       return {
         ...state,
-        token: localStorage.removeItem("token"),
+        tokenBusiness: localStorage.removeItem("tokenBusiness"),
         isAuthenticatedBusiness: false,
         business: null
       };
     case LOGOUT_BUSINESS:
       return {
         ...state,
-        token: localStorage.removeItem("token"),
+        tokenBusiness: localStorage.removeItem("tokenBusiness"),
         isAuthenticatedBusiness: false,
         business: null
       };

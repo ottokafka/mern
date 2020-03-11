@@ -3,12 +3,12 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const Business = require("../models/Business");
 const jwt = require("jsonwebtoken");
-const token = require("../tokenBusiness");
+const tokenBusiness = require("../tokenBusiness");
 
 // @route    GET api/login
-// @desc     Get the user information after you login. Grabs user info once you have a token
+// @desc     Get the user information after you login. Grabs user info once you have a tokenBusiness
 // @access   Private
-router.get("/", token, async (req, res) => {
+router.get("/", tokenBusiness, async (req, res) => {
   try {
     const business = await Business.findById(req.business.id).select(
       "-password"
@@ -20,17 +20,17 @@ router.get("/", token, async (req, res) => {
   }
 });
 
-// @route    GET api/login/token
-// @desc     test the token
+// @route    GET api/login/tokenBusiness
+// @desc     test the tokenBusiness
 // @access   Public
-router.get("/token", token, async (req, res) => {
+router.get("/tokenBusiness", tokenBusiness, async (req, res) => {
   res.json("Token route is working, this is a private route");
 });
 
 // @route    GET api/login/tokenUserID
-// @desc     test the token
+// @desc     test the tokenBusiness
 // @access   Public
-router.get("/tokenUserID", token, async (req, res) => {
+router.get("/tokenUserID", tokenBusiness, async (req, res) => {
   try {
     const business = await Business.findById(req.business.id).select(
       "-password"
@@ -88,9 +88,9 @@ router.post("/business", async (req, res) => {
       {
         expiresIn: 3600000
       },
-      (err, token) => {
+      (err, tokenBusiness) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ tokenBusiness });
       }
     );
   } catch (err) {
@@ -106,11 +106,13 @@ router.post("/business", async (req, res) => {
 router.post("/businessLogin", async (req, res) => {
   const { email, password } = req.body;
 
+  console.log(req.body);
+
   try {
     // search db for email
     let business = await Business.findOne({ email });
 
-    console.log(business);
+    // console.log(business);
 
     if (business.email !== email) {
       return res.status(400).json({ errors: [{ msg: "Invalid Credentials" }] });
@@ -125,8 +127,8 @@ router.post("/businessLogin", async (req, res) => {
         id: business.id
       }
     };
-    console.log("Created our payload");
-    console.log(payload);
+    // console.log("Created our payload");
+    // console.log(payload);
 
     // give jwt to business
     jwt.sign(
@@ -135,9 +137,9 @@ router.post("/businessLogin", async (req, res) => {
       {
         expiresIn: 360000
       },
-      (err, token) => {
+      (err, tokenBusiness) => {
         if (err) throw err;
-        res.json({ token });
+        res.json({ tokenBusiness });
       }
     );
   } catch (err) {

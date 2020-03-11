@@ -21,7 +21,7 @@ const LoginBusiness = ({ login, isAuthenticatedBusiness }) => {
     login({ email, password });
   };
 
-  if (isAuthenticatedBusiness && localStorage.token) {
+  if (isAuthenticatedBusiness && localStorage.tokenBusiness) {
     return <Redirect to="/dashboard_business" />;
   }
 

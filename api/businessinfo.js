@@ -2,11 +2,11 @@ const express = require("express");
 const router = express.Router();
 const BusinessInfo = require("../models/BusinessInfo");
 const Business = require("../models/Business");
-const token = require("../tokenBusiness");
+const tokenBusiness = require("../tokenBusiness");
 const tokenUser = require("../tokenUser");
 
 // test route
-// GET api/businessinfo
+// GET api/businessinfo/test
 router.get("/test", async (req, res) => {
   res.json("business info Get test route is working");
 });
@@ -14,7 +14,7 @@ router.get("/test", async (req, res) => {
 // @route    GET api/businessinfo/me
 // @desc     Get current users business
 // @access   Private
-router.get("/me", token, async (req, res) => {
+router.get("/me", tokenBusiness, async (req, res) => {
   try {
     const businessInfo = await BusinessInfo.findOne({
       business: req.business.id
@@ -36,7 +36,7 @@ router.get("/me", token, async (req, res) => {
 // @route    POST api/businessinfo
 // @desc     Create or update business info
 // @access   Private
-router.post("/", token, async (req, res) => {
+router.post("/", tokenBusiness, async (req, res) => {
   const {
     company,
     address,
@@ -136,7 +136,7 @@ router.get("/business/:business_id", async (req, res) => {
 // @route    DELETE api/businessinfo/:id
 // @desc     Delete business, and availability and services
 // @access   Private
-router.delete("/", token, async (req, res) => {
+router.delete("/", tokenBusiness, async (req, res) => {
   try {
     // Remove user posts
     await BusinessInfo.deleteMany({ business: req.business.id });

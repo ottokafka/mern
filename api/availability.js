@@ -1,19 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const BusinessInfo = require("../models/BusinessInfo");
-const token = require("../tokenBusiness");
+const tokenBusiness = require("../tokenBusiness");
 
 // todo build backend that accepts work hours & free time
 
 // test route
 // GET api/availability/test
-router.get("/test", token, async (req, res) => {
+router.get("/test", tokenBusiness, async (req, res) => {
   res.json("availability Get test route is working as private route");
 });
 
 // Get availability of business
 // GET api/availability/me
-router.get("/me", token, async (req, res) => {
+router.get("/me", tokenBusiness, async (req, res) => {
   try {
     const availability = await BusinessInfo.findOne({
       business: req.business.id
@@ -39,7 +39,7 @@ router.get("/me", token, async (req, res) => {
 // @route    POST api/profile
 // @desc     Create or update user profile
 // @access   Private
-router.put("/", token, async (req, res) => {
+router.put("/", tokenBusiness, async (req, res) => {
   const {
     day_of_week1,
     work1,
@@ -153,7 +153,7 @@ router.put("/", token, async (req, res) => {
 });
 
 // GET availability of the business
-router.get("/work", token, async (req, res) => {
+router.get("/work", tokenBusiness, async (req, res) => {
   let availability = await BusinessInfo.find({ business: req.business.id });
 
   console.log(availability);

@@ -13,13 +13,13 @@ import {
 
 // Get current users profile
 export const getCurrentProfile = () => async dispatch => {
-  const token = localStorage.token;
-  //   console.log(token);
+  const tokenBusiness = localStorage.tokenBusiness;
+  //   console.log(tokenBusiness);
 
   const config = {
     headers: {
       "Content-Type": "application/json",
-      token: token
+      tokenBusiness: tokenBusiness
     }
   };
   try {
@@ -83,11 +83,11 @@ export const createProfile = (
   edit = false
 ) => async dispatch => {
   try {
-    const token = localStorage.token;
+    const tokenBusiness = localStorage.tokenBusiness;
     const config = {
       headers: {
         "Content-Type": "application/json",
-        token: token
+        tokenBusiness: tokenBusiness
       }
     };
 
@@ -122,11 +122,11 @@ export const createProfile = (
 // Add Availability
 export const addAvailability = (formData, history) => async dispatch => {
   try {
-    const token = localStorage.token;
+    const tokenBusiness = localStorage.tokenBusiness;
     const config = {
       headers: {
         "Content-Type": "application/json",
-        token: token
+        tokenBusiness: tokenBusiness
       }
     };
 
@@ -163,11 +163,11 @@ export const addAvailability = (formData, history) => async dispatch => {
 // Add Services
 export const addServices = (formData, history) => async dispatch => {
   try {
-    const token = localStorage.token;
+    const tokenBusiness = localStorage.tokenBusiness;
     const config = {
       headers: {
         "Content-Type": "application/json",
-        token: token
+        tokenBusiness: tokenBusiness
       }
     };
 

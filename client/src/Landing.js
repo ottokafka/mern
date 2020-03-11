@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import fade1 from "./img/fade1.jpeg";
 import fade2 from "./img/fade2.jpeg";
 import fade3 from "./img/fade3.jpeg";
@@ -12,6 +13,12 @@ import fade9 from "./img/fade9.jpeg";
 import { Link } from "react-router-dom";
 
 const Landing = () => {
+  if (localStorage.tokenUser) {
+    return <Redirect to="dashboard_user"></Redirect>;
+  }
+  if (localStorage.tokenBusiness) {
+    return <Redirect to="dashboard_business"></Redirect>;
+  }
   return (
     <div>
       <section className="jumbotron text-center">

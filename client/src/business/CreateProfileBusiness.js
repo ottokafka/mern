@@ -58,8 +58,8 @@ const CreateProfileBusiness = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  let token = localStorage.getItem("token");
-  if (!token || localStorage.token === "undefined") {
+  let tokenBusiness = localStorage.getItem("tokenBusiness");
+  if (!tokenBusiness || localStorage.tokenBusiness === "undefined") {
     return <Redirect to="/login_business" />;
   }
 

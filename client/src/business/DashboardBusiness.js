@@ -18,8 +18,8 @@ const DashboardBusiness = ({
     getCurrentProfile();
   }, [getCurrentProfile]);
 
-  let token = localStorage.token;
-  if (!token || token === "undefined") {
+  let tokenBusiness = localStorage.tokenBusiness;
+  if (!tokenBusiness || tokenBusiness === "undefined") {
     return <Redirect to="login_business" />;
   }
 

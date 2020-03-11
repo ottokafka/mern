@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 // const Services = require("../models/Services");
 const BusinessInfo = require("../models/BusinessInfo");
-const token = require("../tokenBusiness");
+const tokenBusiness = require("../tokenBusiness");
 
 // test route
 // GET api/services/test
@@ -13,7 +13,7 @@ router.get("/test", async (req, res) => {
 // @route    POST api/services
 // @desc     Create or update services
 // @access   Private
-router.put("/", token, async (req, res) => {
+router.put("/", tokenBusiness, async (req, res) => {
   const {
     lineUp,
     fade,

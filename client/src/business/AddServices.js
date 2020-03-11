@@ -89,9 +89,9 @@ const AddServices = ({ addServices, history }) => {
     // sewInMaintenance
   } = formData;
 
-  // check if token is not in localStorage or undefined go to login page
-  let token = localStorage.token;
-  if (!token || token === "undefined") {
+  // check if tokenBusiness is not in localStorage or undefined go to login page
+  let tokenBusiness = localStorage.tokenBusiness;
+  if (!tokenBusiness || tokenBusiness === "undefined") {
     return <Redirect to="login_business" />;
   }
 
