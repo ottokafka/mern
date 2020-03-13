@@ -30,13 +30,15 @@ connectDB();
 app.use(express.json({ extended: false }));
 
 // all api routes
-app.use("/api/login", require("./api/login"));
+app.use("/api/loginBusiness", require("./api/loginBusiness"));
+app.use("/api/registerBusiness", require("./api/registerBusiness"));
 app.use("/api/availability", require("./api/availability"));
 app.use("/api/businessinfo", require("./api/businessinfo"));
 app.use("/api/services", require("./api/services"));
 
 // user client api routes
-app.use("/api/user", require("./api/user/user"));
+app.use("/api/loginUser", require("./api/user/loginUser"));
+app.use("/api/registerUser", require("./api/user/registerUser"));
 app.use("/api/profile", require("./api/user/profile"));
 
 // Serve static assets in production

@@ -22,7 +22,7 @@ export const loadBusiness = () => async dispatch => {
   };
 
   try {
-    const res = await axios.get("/api/login", config);
+    const res = await axios.get("/api/loginBusiness", config);
     console.log(res);
 
     dispatch({
@@ -47,7 +47,7 @@ export const register = (name, email, password) => async dispatch => {
   const body = JSON.stringify(name, email, password);
 
   try {
-    const res = await axios.post("/api/login/business", body, config);
+    const res = await axios.post("/api/registerBusiness", body, config);
 
     console.log(res.data);
 
@@ -84,7 +84,7 @@ export const login = (email, password) => async dispatch => {
 
   try {
     // axios post our email and pass. TO check response use res.data
-    const res = await axios.post("/api/login/businessLogin", body, config);
+    const res = await axios.post("/api/loginBusiness", body, config);
 
     // show our results from the server
     console.log(res.data);

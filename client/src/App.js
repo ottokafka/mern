@@ -17,6 +17,7 @@ import AddServices from "./business/AddServices";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { loadBusiness } from "./redux/actions/authBusiness";
+import { loadUser } from "./redux/actions/authActions";
 
 // User
 import UserLogin from "./user/UserLogin";
@@ -28,7 +29,6 @@ import ShowAvailability from "./user/ShowAvailability";
 
 // css
 import "./App.css";
-import { loadUser } from "./redux/actions/authActions";
 
 const App = () => {
   // in redux action loadBusiness by token and run api to get user data back

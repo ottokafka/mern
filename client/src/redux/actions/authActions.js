@@ -22,7 +22,7 @@ export const loadUser = () => async dispatch => {
   };
 
   try {
-    const res = await axios.get("/api/user", config);
+    const res = await axios.get("/api/loginUser", config);
     console.log(res);
 
     dispatch({
@@ -47,7 +47,7 @@ export const registerUser = ({ name, email, password }) => async dispatch => {
   const body = JSON.stringify({ name, email, password });
 
   try {
-    const res = await axios.post("/api/user", body, config);
+    const res = await axios.post("/api/registerUser", body, config);
 
     localStorage.setItem("tokenUser", res.data.tokenUser);
 
@@ -81,7 +81,7 @@ export const login = (email, password) => async dispatch => {
   const body = JSON.stringify(email, password);
 
   try {
-    const res = await axios.post("/api/user/loginUser", body, config);
+    const res = await axios.post("/api/loginUser", body, config);
     console.log(res.data);
 
     localStorage.setItem("tokenUser", res.data.tokenUser);
