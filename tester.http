@@ -1,23 +1,8 @@
 
-// test Token
-GET http://localhost:5000/api/login/tokenBusiness
-Content-Type: application/json
-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
-###
 
-// test Token and see all user data 
-GET http://localhost:5000/api/login/tokenUserID
-Content-Type: application/json
-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTcwMTFhZTIyYmNjMjA5NjI4Yjg2NyJ9LCJpYXQiOjE1ODI3NjAyMTgsImV4cCI6MTU4NjM2MDIxOH0.LYtQx8jcJ0j9VThUtCZ-75jCTM4a2E5P4N1FyPbboWw
-###
-
-// test GET api
-GET http://localhost:5000/api/login/test
-Content-Type: application/json
-###
 
 // test POST api
-POST http://localhost:5000/api/login/test
+POST http://localhost:5000/api/loginBusiness
 Content-Type: application/json
 
 {
@@ -29,7 +14,7 @@ Content-Type: application/json
 
 
 // Business registration 1
-POST http://localhost:5000/api/login/business
+POST http://localhost:5000/api/registerBusiness
 Content-Type: application/json
 
 {
@@ -41,21 +26,9 @@ Content-Type: application/json
 }
 ###
 
-// Business registration 2
-POST http://localhost:5000/api/login/business
-Content-Type: application/json
-
-{
-    "firstName" : "sam",
-    "lastName": "smith",
-    "email": "samb3@email.com",
-    "password": "123456",
-    "phoneNumber": "123456789"
-}
-###
 
 // Business login 
-POST http://localhost:5000/api/login/businessLogin
+POST http://localhost:5000/api/loginBusiness
 Content-Type: application/json
 
 {
@@ -216,12 +189,9 @@ tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVl
 //todo
 
 //  --------------Users -------------------- Users -------------------- Users
-GET http://localhost:5000/api/user/test
-Content-Type: application/json
 
-### 
 
-post http://localhost:5000/api/user
+post http://localhost:5000/api/registerUser
 Content-Type: application/json
 
 {
@@ -230,7 +200,7 @@ Content-Type: application/json
     "password": "123456"
 }
 ### 
-post http://localhost:5000/api/user/loginUser
+post http://localhost:5000/api/loginUser
 Content-Type: application/json
 
 {
