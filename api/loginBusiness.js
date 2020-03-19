@@ -63,7 +63,7 @@ router.post("/", async (req, res) => {
     );
   } catch (err) {
     console.error(err.message);
-    res.json("server error");
+    res.json(err);
   }
 });
 
