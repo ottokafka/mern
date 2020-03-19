@@ -26,6 +26,18 @@ Content-Type: application/json
 }
 ###
 
+// test the server register
+POST https://startup-barber.herokuapp.com/api/registerBusiness
+Content-Type: application/json
+
+{
+    "firstName" : "John",
+    "lastName": "Mick",
+    "email": "test111@email.com",
+    "password": "123456",
+    "phoneNumber": "123456789"
+}
+###
 
 // Business login 
 POST http://localhost:5000/api/loginBusiness
@@ -46,9 +58,9 @@ x-auth-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZ
 ###
 
 // Availability
-POST http://localhost:5000/api/availability
+PUT http://localhost:5000/api/availability
 Content-Type: application/json
-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWFlMTQzNzQ5NzI3MmI1OGQ5NTc5MiJ9LCJpYXQiOjE1ODMwMTQyMTEsImV4cCI6MTU4NjYxNDIxMX0.LGpegMzTwtYHcX3GpGitvSxQAbEIQ4Brsnd3VGYbFH0
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNmI3MDhlMWNhNzM2MDAxN2YyMWI3MCJ9LCJpYXQiOjE1ODQwOTk0NzAsImV4cCI6MTU4NzY5OTQ3MH0.iaLMXn-Sbhj3eO9sQgsfOoZTPyCBCgJBaGQgDuDAYlE
 
 {
       "day_of_week1": "Monday",
@@ -112,11 +124,11 @@ Content-Type: application/json
 // BussinessInfo  route
 POST http://localhost:5000/api/businessinfo
 Content-Type: application/json
-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIyNGNmMDAwMGViYzVkYmVjMyJ9LCJpYXQiOjE1ODMwNzk2MDMsImV4cCI6MTU4NjY3OTYwM30.3ihJ36YjdN2bGyQMYEUAe66nXDXcZG-bmSwf8j6yxNk
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNmI3MDhlMWNhNzM2MDAxN2YyMWI3MCJ9LCJpYXQiOjE1ODQwOTk0NzAsImV4cCI6MTU4NzY5OTQ3MH0.iaLMXn-Sbhj3eO9sQgsfOoZTPyCBCgJBaGQgDuDAYlE
 
 {
-"company":"Fuck",
-"address": "6699 Broklen d street",
+"company":"off you ",
+"address": "1111 d street",
 "city": "Sacramento",
 "state": "California",
 "zip": "95201",
@@ -134,7 +146,7 @@ Content-Type: application/json
 // services for hairstyles and cost saving to db
 POST http://localhost:5000/api/services
 Content-Type: application/json
-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNWJlMGIyNGNmMDAwMGViYzVkYmVjMyJ9LCJpYXQiOjE1ODMwNzk2MDMsImV4cCI6MTU4NjY3OTYwM30.3ihJ36YjdN2bGyQMYEUAe66nXDXcZG-bmSwf8j6yxNk
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNmI3MDhlMWNhNzM2MDAxN2YyMWI3MCJ9LCJpYXQiOjE1ODQwOTk0NzAsImV4cCI6MTU4NzY5OTQ3MH0.iaLMXn-Sbhj3eO9sQgsfOoZTPyCBCgJBaGQgDuDAYlE
 
 {
 "lineUp":15,
@@ -183,7 +195,7 @@ x-auth-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZ
 //  Bussiness me
 GET http://localhost:5000/api/businessinfo/me
 Content-Type: application/json
-tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNTZkOWU3OTIyOTA4MTI5YTdlODZjOSJ9LCJpYXQiOjE1ODI3NTAxODQsImV4cCI6MTU4NjM1MDE4NH0.nrtU15R9hes9t0O8OEpIH-Fa-yf0gCT5GvSNFue5p4g
+tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNmI3MDhlMWNhNzM2MDAxN2YyMWI3MCJ9LCJpYXQiOjE1ODQwOTk0NzAsImV4cCI6MTU4NzY5OTQ3MH0.iaLMXn-Sbhj3eO9sQgsfOoZTPyCBCgJBaGQgDuDAYlE
 
 ### 
 //todo

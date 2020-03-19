@@ -36,8 +36,8 @@ router.get("/me", tokenBusiness, async (req, res) => {
 
 // create or update availability
 
-// @route    POST api/profile
-// @desc     Create or update user profile
+// @route    POST api/availability
+// @desc     Create or update business availability
 // @access   Private
 router.put("/", tokenBusiness, async (req, res) => {
   const {

@@ -22,7 +22,7 @@ router.get("/", tokenBusiness, async (req, res) => {
 // @route    POST api/businessLogin
 // @desc     Login business
 // @access   Public
-router.post("/businessLogin", async (req, res) => {
+router.post("/", async (req, res) => {
   const { email, password } = req.body;
 
   console.log(req.body);
