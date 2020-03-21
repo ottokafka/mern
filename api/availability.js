@@ -7,7 +7,7 @@ const tokenBusiness = require("../tokenBusiness");
 
 // test route
 // GET api/availability/test
-router.get("/test", tokenBusiness, async (req, res) => {
+router.get("/test", async (req, res) => {
   res.json("availability Get test route is working as private route");
 });
 
