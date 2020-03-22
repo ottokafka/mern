@@ -26,6 +26,18 @@ Content-Type: application/json
 }
 ###
 
+POST http://150.136.56.131:5000/api/registerBusiness
+Content-Type: application/json
+
+{
+    "firstName" : "g",
+    "lastName": "g",
+    "email": "g@email.com",
+    "password": "1",
+    "phoneNumber": "123456789"
+}
+###
+
 // test the server register
 POST https://startup-barber.herokuapp.com/api/registerBusiness
 Content-Type: application/json
@@ -144,7 +156,7 @@ Content-Type: application/json
 ### 
 
 // services for hairstyles and cost saving to db
-POST http://localhost:5000/api/services
+PUT http://localhost:5000/api/services
 Content-Type: application/json
 tokenBusiness: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJidXNpbmVzcyI6eyJpZCI6IjVlNmI3MDhlMWNhNzM2MDAxN2YyMWI3MCJ9LCJpYXQiOjE1ODQwOTk0NzAsImV4cCI6MTU4NzY5OTQ3MH0.iaLMXn-Sbhj3eO9sQgsfOoZTPyCBCgJBaGQgDuDAYlE
 
@@ -246,3 +258,20 @@ post https://startup-barber.herokuapp.com/api/businessinfo/city
      "city": "sacramento"
 }
 ### 
+
+post https://startup-barber.herokuapp.com/api/loginBusiness
+Content-Type: application/json
+
+{
+     "email": "n@email.com",
+     "password": "1"
+}
+### 
+
+
+
+GET http://150.136.56.131:5000/api/availability/test
+Content-Type: application/json
+
+### 
+
