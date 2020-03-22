@@ -1,6 +1,6 @@
-# A mern stack boilerplate for startup.
+# A MERN stack boilerplate for startup.
 
-# Get Started
+# Get Started developing
 
 ```
 npm install
@@ -22,7 +22,13 @@ Node.js, Express.js Mongodb
 
 React.js Redux
 
-Images
+# Why use this
+
+This code base has a robust backend written in Node.js. Node.js is easy to write and understand by frontend developers. Although, a Node.js server can't compete with Golang as a backend server in terms of speed and efficiency. In the case that you just need to get a phototype up and running asap and only have a Frontend engineer then Node.js is the way to go.
+
+As for the Frontend written in React.js. Its a clear winner in terms of flexibility and popularity compared to other frameworks. So there lots of examples and tools to use to get a project up and going.
+
+### Images of the project
 
 landing user page
 
