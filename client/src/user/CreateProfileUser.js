@@ -1,5 +1,5 @@
 import React, { useEffect, useState, Fragment } from "react";
-import { Link, withRouter, Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile, getCurrentProfile } from "../redux/actions/profileUser";
@@ -15,8 +15,6 @@ const CreateProfileUser = ({
     phoneNumber: "",
     email: ""
   });
-
-  const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
   const { name, phoneNumber, email } = formData;
 
